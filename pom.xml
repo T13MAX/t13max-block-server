@@ -11,10 +11,22 @@
   <url>http://maven.apache.org</url>
   <modules>
     <module>service-game</module>
+    <module>common-util</module>
+    <module>common-game</module>
+      <module>common-proto</module>
+    <module>common-data</module>
   </modules>
 
   <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <protobuf.version>3.25.1</protobuf.version>
+    <grpc.version>1.11.0</grpc.version>
+    <os-maven-plugin.version>1.6.1</os-maven-plugin.version>
+    <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+    <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
   </properties>
 
   <dependencies>
@@ -23,6 +35,22 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.17.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.17.2</version>
     </dependency>
   </dependencies>
 </project>
