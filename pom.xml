@@ -17,6 +17,7 @@
     <module>common-data</module>
     <module>common-ai</module>
     <module>service-center</module>
+      <module>common-template</module>
   </modules>
 
   <properties>

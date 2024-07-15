@@ -1,11 +1,19 @@
 package com.t13max.persist.data.inventory;
 
+import lombok.Data;
+
 /**
- * 一个格子
+ * 道具
  *
  * @Author: t13max
  * @Since: 22:09 2024/7/14
  */
-public class ItemStackData {
+@Data
+public class ItemStackData extends AbstractStackData{
+
+    public static final ItemStackData EMPTY = new ItemStackData();
+
+    //数量
+    private int num;
 
 }

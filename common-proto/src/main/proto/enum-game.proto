@@ -5,6 +5,52 @@ option java_multiple_files = true;
 
 //世界枚举
 enum WorldEnum{
-  DEF = 0;
+  DEF_WORLD = 0;
   MAIN_WORLD = 1;
+}
+
+//方块枚举
+enum BlockEnum{
+  AIR_BLOCK = 0;
+  DIRTY_BLOCK = 1;
+  STONE_BLOCK = 2;
+  BED_BLOCK = 3;
+}
+
+//道具枚举
+enum ItemEnum{
+  //与方块一一对应
+  AIR_ITEM = 0;
+  DIRTY_ITEM = 1;
+  STONE_ITEM = 2;
+  BED_ITEM = 3;
+
+  //武器装备工具
+  SWORD = 10001;
+
+  //食物
+  APPLE = 20001;
+
+  //其他 一个类型加一万
+}
+
+//装备部位
+enum EquipPartsEnum{
+  DEF_EQUIP_PARTS = 0;
+  HEAD = 1;
+  BODY = 2;
+  PANTS = 3;
+  SHOES = 4;
+}
+
+//附魔枚举
+enum EnchantEnum{
+  DEF_ENCHANT = 0;
+}
+
+//实体类型枚举
+enum EntityEnum{
+  DEF_ENTITY = 0;
+  PLAYER = 1;
+  ZOMBIE = 2;
 }
