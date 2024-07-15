@@ -15,6 +15,8 @@
     <module>common-game</module>
       <module>common-proto</module>
     <module>common-data</module>
+    <module>common-ai</module>
+    <module>service-center</module>
   </modules>
 
   <properties>

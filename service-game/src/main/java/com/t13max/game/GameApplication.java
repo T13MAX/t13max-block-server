@@ -1,6 +1,7 @@
 package com.t13max.game;
 
 import com.t13max.game.config.BlockConfig;
+import com.t13max.game.manager.ManagerBase;
 import com.t13max.game.server.BlockServerFactory;
 import com.t13max.game.server.IBlockServer;
 
@@ -17,10 +18,26 @@ public class GameApplication {
         //先加载配置
         BlockConfig blockConfig = BlockConfig.INSTANCE;
 
+        //初始化所有Manager
+        ManagerBase.initAllManagers();
+
+        //添加停服钩子
+        addShutdownHook(ManagerBase::shutdown);
+
         //创建服务器
         IBlockServer blockServer = BlockServerFactory.createBlockServer();
 
         //block 启动!
         blockServer.runServer();
+    }
+
+    /**
+     * 停服钩子
+     *
+     * @Author t13max
+     * @Date 10:36 2024/7/15
+     */
+    public static void addShutdownHook(Runnable runnable) {
+        Runtime.getRuntime().addShutdownHook(new Thread(runnable));
     }
 }
