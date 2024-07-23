@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>t13max-core</artifactId>
-            <version>${t13max-common.version}</version>
+            <version>${t13max-core.version}</version>
         </dependency>
     </dependencies>
     <build>

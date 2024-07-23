@@ -21,7 +21,12 @@
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-proto</artifactId>
-            <version>${t13max-block-server.version}</version>
+            <version>${common-proto.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.t13max</groupId>
+            <artifactId>common-game</artifactId>
+            <version>${common-game.version}</version>
         </dependency>
 
         <dependency>
@@ -34,11 +39,5 @@
             <artifactId>mongodb-driver-sync</artifactId>
             <version>${mongodb.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.t13max</groupId>
-            <artifactId>common-game</artifactId>
-            <version>${common-game.version}</version>
-        </dependency>
-
     </dependencies>
 </project>

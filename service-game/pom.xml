@@ -28,17 +28,17 @@
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-game</artifactId>
-            <version>${t13max-block-server.version}</version>
+            <version>${common-game.version}</version>
         </dependency>
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-proto</artifactId>
-            <version>${t13max-block-server.version}</version>
+            <version>${common-proto.version}</version>
         </dependency>
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-data</artifactId>
-            <version>${t13max-block-server.version}</version>
+            <version>${common-data.version}</version>
         </dependency>
     </dependencies>
 </project>

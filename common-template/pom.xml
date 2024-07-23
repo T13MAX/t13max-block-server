@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-game</artifactId>
-            <version>${t13max-block-server.version}</version>
+            <version>${common-game.version}</version>
         </dependency>
     </dependencies>
 </project>

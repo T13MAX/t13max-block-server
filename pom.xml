@@ -23,7 +23,8 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <t13max-block-server.version>1.0.1</t13max-block-server.version>
-    <t13max-common.version>1.0.1</t13max-common.version>
+    <t13max-util.version>1.0.1</t13max-util.version>
+    <t13max-core.version>1.0.1</t13max-core.version>
     <common-data.version>1.0.1</common-data.version>
     <common-game.version>1.0.1</common-game.version>
     <common-proto.version>1.0.1</common-proto.version>
