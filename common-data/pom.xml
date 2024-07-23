@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.t13max</groupId>
         <artifactId>t13max-block-server</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>common-data</artifactId>
@@ -19,31 +19,26 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.t13max</groupId>
-            <artifactId>common-game</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-proto</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${t13max-block-server.version}</version>
         </dependency>
 
         <dependency>
             <groupId>dev.morphia.morphia</groupId>
             <artifactId>morphia-core</artifactId>
-            <version>2.4.14</version>
+            <version>${morpgia.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>
-            <version>4.7.0</version>
+            <version>${mongodb.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.t13max</groupId>
+            <artifactId>common-game</artifactId>
+            <version>${common-game.version}</version>
+        </dependency>
+
     </dependencies>
 </project>

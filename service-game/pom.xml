@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.t13max</groupId>
         <artifactId>t13max-block-server</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>service-game</artifactId>
@@ -22,23 +22,23 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>2.2</version>
+            <version>${yaml.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-game</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${t13max-block-server.version}</version>
         </dependency>
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-proto</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${t13max-block-server.version}</version>
         </dependency>
         <dependency>
             <groupId>com.t13max</groupId>
             <artifactId>common-data</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${t13max-block-server.version}</version>
         </dependency>
     </dependencies>
 </project>
