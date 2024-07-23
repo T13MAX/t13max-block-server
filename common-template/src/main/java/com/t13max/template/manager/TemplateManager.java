@@ -1,10 +1,10 @@
 package com.t13max.template.manager;
 
 
+import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.exception.CommonException;
-import com.t13max.game.manager.ManagerBase;
+import com.t13max.game.util.Log;
 import com.t13max.template.helper.TemplateHelper;
-import com.t13max.util.Log;
 import com.t13max.util.PackageUtil;
 
 import java.lang.reflect.InvocationTargetException;

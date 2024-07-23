@@ -1,9 +1,9 @@
 package com.t13max.template.helper;
 
 import com.t13max.game.exception.CommonException;
+import com.t13max.game.util.Log;
 import com.t13max.template.ITemplate;
 import com.t13max.template.util.JsonUtils;
-import com.t13max.util.Log;
 
 import java.util.Collection;
 import java.util.HashMap;

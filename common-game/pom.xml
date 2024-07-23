@@ -15,12 +15,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.t13max</groupId>
-            <artifactId>t13max-util</artifactId>
+            <artifactId>t13max-core</artifactId>
             <version>${t13max-common.version}</version>
         </dependency>
     </dependencies>
@@ -30,8 +31,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
         </plugins>

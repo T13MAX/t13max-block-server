@@ -2,7 +2,7 @@ package com.t13max.persist;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.t13max.game.manager.ManagerBase;
+import com.t13max.common.manager.ManagerBase;
 import dev.morphia.Datastore;
 import dev.morphia.Morphia;
 

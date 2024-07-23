@@ -1,7 +1,7 @@
 package com.t13max.game;
 
+import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.config.BlockConfig;
-import com.t13max.game.manager.ManagerBase;
 import com.t13max.game.server.BlockServerFactory;
 import com.t13max.game.server.IBlockServer;
 

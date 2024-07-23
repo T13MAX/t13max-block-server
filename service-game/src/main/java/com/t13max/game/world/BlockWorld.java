@@ -2,10 +2,9 @@ package com.t13max.game.world;
 
 import com.t13max.game.consts.Const;
 import com.t13max.game.entity.IBlockEntity;
+import com.t13max.game.util.Log;
 import com.t13max.game.world.chunk.BlockChunk;
-import com.t13max.util.Log;
 import game.enums.WorldEnum;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +33,7 @@ public class BlockWorld {
     //记录上次tick时间
     private long lastTickMills;
     //世界类型
-    private WorldEnum worldEnum = WorldEnum.DEF;
+    private WorldEnum worldEnum = WorldEnum.DEF_WORLD;
     //这个世界的实体集合
     private Map<Long, IBlockEntity> entityMap = new HashMap<>();
     //区块
@@ -51,7 +50,7 @@ public class BlockWorld {
      * @Date 11:16 2024/7/15
      */
     public void load() {
-        worldEnum = WorldEnum.DEF;
+        worldEnum = WorldEnum.DEF_WORLD;
         blockChunk = new BlockChunk();
     }
 
