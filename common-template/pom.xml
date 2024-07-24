@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.t13max</groupId>
+        <groupId>com.t13max.block</groupId>
         <artifactId>t13max-block-server</artifactId>
         <version>1.0.1</version>
     </parent>
@@ -25,7 +25,7 @@
             <version>${fastjson.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.t13max</groupId>
+            <groupId>com.t13max.block</groupId>
             <artifactId>common-game</artifactId>
             <version>${common-game.version}</version>
         </dependency>

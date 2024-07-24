@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.t13max</groupId>
+        <groupId>com.t13max.block</groupId>
         <artifactId>t13max-block-server</artifactId>
         <version>1.0.1</version>
     </parent>
@@ -26,17 +26,17 @@
         </dependency>
 
         <dependency>
-            <groupId>com.t13max</groupId>
+            <groupId>com.t13max.block</groupId>
             <artifactId>common-game</artifactId>
             <version>${common-game.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.t13max</groupId>
+            <groupId>com.t13max.block</groupId>
             <artifactId>common-proto</artifactId>
             <version>${common-proto.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.t13max</groupId>
+            <groupId>com.t13max.block</groupId>
             <artifactId>common-data</artifactId>
             <version>${common-data.version}</version>
         </dependency>
