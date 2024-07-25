@@ -16,7 +16,7 @@ import java.util.Map;
  * @since: 14:03 2024/7/15
  */
 @Data
-public class ZombieEntityData implements IPersistData {
+public class ZombieEntityData extends EntityData {
 
     @Id
     private long id;

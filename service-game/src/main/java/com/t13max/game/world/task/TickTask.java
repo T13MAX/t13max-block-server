@@ -1,6 +1,6 @@
 package com.t13max.game.world.task;
 
-import com.t13max.game.world.BlockWorld;
+import com.t13max.game.world.World;
 
 /**
  * tick任务
@@ -10,14 +10,14 @@ import com.t13max.game.world.BlockWorld;
  */
 public class TickTask implements Runnable {
 
-    private BlockWorld blockWorld;
+    private final World world;
 
-    public TickTask(BlockWorld blockWorld) {
-        this.blockWorld = blockWorld;
+    public TickTask(World world) {
+        this.world = world;
     }
 
     @Override
     public void run() {
-        blockWorld.tick();
+        world.tick();
     }
 }

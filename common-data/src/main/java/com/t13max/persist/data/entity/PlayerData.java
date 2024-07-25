@@ -1,7 +1,5 @@
 package com.t13max.persist.data.entity;
 
-
-import com.t13max.persist.data.IPersistData;
 import com.t13max.persist.data.inventory.InventoryData;
 import com.t13max.persist.data.inventory.ItemStackData;
 import dev.morphia.annotations.*;
@@ -22,8 +20,7 @@ import java.util.Map;
         @Index(fields = {@Field("userId")})
 })
 @Data
-public class PlayerData implements IPersistData {
-
+public class PlayerData extends EntityData {
     @Id
     private long id;
     //玩家唯一用户id

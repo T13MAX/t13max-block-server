@@ -2,7 +2,6 @@ package com.t13max.game.world;
 
 import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.consts.Const;
-import com.t13max.game.util.Log;
 import com.t13max.game.world.task.TickTask;
 import com.t13max.util.TimeUtil;
 import game.enums.WorldEnum;
@@ -24,7 +23,7 @@ public class WorldManager extends ManagerBase {
     private ScheduledExecutorService worldManagerExecutor = Executors.newSingleThreadScheduledExecutor();
 
     //world缓存 要不要线程安全?
-    private Map<String, BlockWorld> worldMap = new HashMap<>();
+    private Map<String, World> worldMap = new HashMap<>();
 
     public static WorldManager inst() {
         return ManagerBase.inst(WorldManager.class);
@@ -38,8 +37,8 @@ public class WorldManager extends ManagerBase {
      */
     @Override
     protected void onShutdown() {
-        for (BlockWorld blockWorld : worldMap.values()) {
-            blockWorld.onShutdown();
+        for (World world : worldMap.values()) {
+            world.onShutdown();
         }
     }
 
@@ -56,16 +55,11 @@ public class WorldManager extends ManagerBase {
      * @Date 11:26 2024/7/15
      */
     private void schedule() {
-        long nowMills = TimeUtil.nowMills();
-        for (BlockWorld blockWorld : worldMap.values()) {
-            //检测是否卡死
-            long lastTickMills = blockWorld.getLastTickMills();
-            if (nowMills - lastTickMills > 1000) {
-                Log.game.error("延迟过高! world={}", blockWorld.getWorldEnum());
-                //后续增加其他处理
-            }
+        for (World world : worldMap.values()) {
+            //检查卡死
+            world.checkStuck();
             //添加tick任务
-            blockWorld.addTask(new TickTask(blockWorld));
+            world.addTask(new TickTask(world));
         }
     }
 
@@ -75,7 +69,7 @@ public class WorldManager extends ManagerBase {
      * @Author: t13max
      * @Since: 21:25 2024/7/14
      */
-    public BlockWorld getWorld(String name) {
+    public World getWorld(String name) {
         return this.worldMap.get(name);
     }
 
@@ -85,7 +79,7 @@ public class WorldManager extends ManagerBase {
      * @Author: t13max
      * @Since: 21:25 2024/7/14
      */
-    public BlockWorld getWorld(WorldEnum worldEnum) {
+    public World getWorld(WorldEnum worldEnum) {
         return this.worldMap.get(worldEnum.name());
     }
 
