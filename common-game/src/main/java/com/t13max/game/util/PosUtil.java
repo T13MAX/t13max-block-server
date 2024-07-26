@@ -28,23 +28,23 @@ public class PosUtil {
         return pos >>> 16;
     }
 
-    public int getWorldX(long chunkId, short pos) {
-        return getWorldX(chunkId) + getX(pos);
+    public int getChunkX(long chunkId, short pos) {
+        return getChunkX(chunkId) * 16 + getX(pos);
     }
 
-    public int getWorldZ(long chunkId, short pos) {
-        return getWorldZ(chunkId) + getZ(pos);
+    public int getChunkZ(long chunkId, short pos) {
+        return getChunkZ(chunkId) * 16 + getZ(pos);
     }
 
     public short getPos(int x, int y, int z) {
         return (short) (y << 16 + z << 8 + x);
     }
 
-    public int getWorldX(long chunkId) {
+    public int getChunkX(long chunkId) {
         return (int) (chunkId & mask_32);
     }
 
-    public int getWorldZ(long chunkId) {
+    public int getChunkZ(long chunkId) {
         return (int) (chunkId >> 32 & mask_32);
     }
 

@@ -1,9 +1,11 @@
 package com.t13max.game.world.chunk;
 
+import com.t13max.game.util.PosUtil;
 import com.t13max.persist.data.chunk.ChunkData;
 import game.enums.BlockEnum;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 超平坦
@@ -20,10 +22,20 @@ public class FlatChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public ChunkData generateChunkData(long pos) {
-        ChunkData chunkData = new ChunkData(pos);
+    public ChunkData generateChunkData(long chunkId) {
+        ChunkData chunkData = new ChunkData(chunkId);
+        Map<Short, Short> blockDataMap = chunkData.getBlockDataMap();
+        int y = 0;
         for (FlatPair pair : flatList) {
-
+            short blockId = (short) pair.blockEnum.getNumber();
+            for (int i = 0; i < pair.layer; i++) {
+                for (int j = 0; j < 16; j++) {
+                    for (int k = 0; k < 16; k++) {
+                        blockDataMap.put(PosUtil.getPos(j, k, y), blockId);
+                    }
+                }
+                y++;
+            }
         }
         return null;
     }

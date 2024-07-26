@@ -1,6 +1,5 @@
 package com.t13max.game.world.module;
 
-import com.t13max.game.exception.CommonException;
 import com.t13max.game.exception.GameException;
 import com.t13max.game.world.World;
 import com.t13max.util.PackageUtil;

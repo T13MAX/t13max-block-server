@@ -1,6 +1,5 @@
 package com.t13max.persist.data.entity;
 
-import com.t13max.persist.data.IPersistData;
 import com.t13max.persist.data.inventory.ItemStackData;
 import dev.morphia.annotations.Id;
 import game.enums.EquipPartsEnum;

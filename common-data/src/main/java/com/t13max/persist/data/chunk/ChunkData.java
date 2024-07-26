@@ -1,5 +1,6 @@
 package com.t13max.persist.data.chunk;
 
+import com.t13max.game.util.PosUtil;
 import com.t13max.persist.data.IPersistData;
 import com.t13max.persist.data.entity.EntityData;
 import dev.morphia.annotations.Id;
@@ -35,10 +36,10 @@ public class ChunkData implements IPersistData {
     }
 
     public int getX() {
-        return 0;
+        return PosUtil.getChunkX(chunkId);
     }
 
-    public int getY() {
-        return 0;
+    public int getZ() {
+        return PosUtil.getChunkZ(chunkId);
     }
 }
