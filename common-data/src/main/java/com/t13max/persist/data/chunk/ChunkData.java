@@ -2,7 +2,9 @@ package com.t13max.persist.data.chunk;
 
 import com.t13max.game.util.PosUtil;
 import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.UnloadData;
 import com.t13max.persist.data.entity.EntityData;
+import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import lombok.Data;
 
@@ -16,8 +18,9 @@ import java.util.Map;
  * @author: t13max
  * @since: 13:37 2024/7/15
  */
+@Entity
 @Data
-public class ChunkData implements IPersistData {
+public class ChunkData extends UnloadData {
 
     @Id
     private long chunkId;//区块id 由两个int的xy拼成

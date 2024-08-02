@@ -39,7 +39,7 @@ public abstract class EntityModule {
      */
     private void initModule() {
         try {
-            Set<Class<?>> classSet = PackageUtil.scan("com.t13max.game.entity.module");
+            Set<Class<?>> classSet = PackageUtil.scanCache("com.t13max.game.entity.module");
             for (Class<?> clazz : classSet) {
                 // 只需要加载TemplateHelper注解数据
                 if (!EntityModule.class.isAssignableFrom(clazz) || Modifier.isAbstract(clazz.getModifiers())) {

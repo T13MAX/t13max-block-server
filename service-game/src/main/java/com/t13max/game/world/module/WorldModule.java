@@ -1,5 +1,6 @@
 package com.t13max.game.world.module;
 
+import com.t13max.game.entity.IEntity;
 import com.t13max.game.world.World;
 import lombok.Getter;
 
@@ -33,12 +34,12 @@ public abstract class WorldModule {
 
     }
 
-    public void enterWorld(World world) {
+    public void enterWorld(IEntity entity) {
 
 
     }
 
-    public void leaveWorld(World world) {
+    public void leaveWorld(IEntity entity) {
 
 
     }

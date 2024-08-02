@@ -13,4 +13,8 @@ public interface Const {
     int TICK_INTERVAL = 50;
     //第一次执行定时任务延迟
     int SCHEDULE_INIT_DELAY = 1000;
+    //区块的长度
+    int CHUNK_LENGTH = 16;
+    //区块字符串
+    String CHUNK_NAME = "chunk";
 }

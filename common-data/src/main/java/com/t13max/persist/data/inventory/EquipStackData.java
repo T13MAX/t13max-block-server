@@ -1,6 +1,8 @@
 package com.t13max.persist.data.inventory;
 
+import dev.morphia.annotations.Entity;
 import game.enums.EnchantEnum;
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +13,8 @@ import java.util.Map;
  * @author: t13max
  * @since: 14:42 2024/7/15
  */
+@Entity
+@Data
 public class EquipStackData extends AbstractStackData {
 
     //附魔效果

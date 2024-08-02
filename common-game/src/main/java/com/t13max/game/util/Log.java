@@ -12,4 +12,5 @@ public class Log {
     public static Logger msg = LogManager.getLogger("MSG");
     public static Logger game = LogManager.getLogger("GAME");
     public static Logger template = LogManager.getLogger("TEMPLATE");
+    public static Logger data = LogManager.getLogger("DATA");
 }

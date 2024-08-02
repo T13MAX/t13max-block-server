@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 世界模块集合
+ *
  * @author: t13max
  * @since: 16:18 2024/7/25
  */
@@ -35,7 +37,7 @@ public class WorldModules {
      */
     private void initModule() {
         try {
-            Set<Class<?>> classSet = PackageUtil.scan("com.t13max.game.world.module");
+            Set<Class<?>> classSet = PackageUtil.scanCache("com.t13max.game.world.module");
             for (Class<?> clazz : classSet) {
                 // 只需要加载TemplateHelper注解数据
                 if (!WorldModule.class.isAssignableFrom(clazz) || Modifier.isAbstract(clazz.getModifiers())) {

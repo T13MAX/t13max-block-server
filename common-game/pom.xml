@@ -24,6 +24,12 @@
             <artifactId>t13max-core</artifactId>
             <version>${t13max-core.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${yaml.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

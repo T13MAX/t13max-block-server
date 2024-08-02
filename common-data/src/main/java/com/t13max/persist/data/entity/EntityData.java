@@ -1,6 +1,7 @@
 package com.t13max.persist.data.entity;
 
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.UnloadData;
+import lombok.Data;
 
 /**
  * 实体基类
@@ -8,7 +9,7 @@ import com.t13max.persist.data.IPersistData;
  * @author: t13max
  * @since: 15:29 2024/7/25
  */
-public class EntityData implements IPersistData {
-
+@Data
+public class EntityData extends UnloadData {
 
 }

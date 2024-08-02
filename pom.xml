@@ -16,6 +16,7 @@
         <module>common-data</module>
         <module>service-center</module>
         <module>common-template</module>
+        <module>common-api</module>
     </modules>
 
     <properties>
@@ -30,6 +31,7 @@
         <common-proto.version>1.0.1</common-proto.version>
         <common-template.version>1.0.1</common-template.version>
 
+        <javassist.version>3.24.1-GA</javassist.version>
         <yaml.version>2.2</yaml.version>
         <mongodb.version>4.7.0</mongodb.version>
         <morpgia.version>2.4.14</morpgia.version>

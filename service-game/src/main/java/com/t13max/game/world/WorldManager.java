@@ -3,7 +3,10 @@ package com.t13max.game.world;
 import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.consts.Const;
 import com.t13max.game.world.task.TickTask;
+import com.t13max.persist.DataManager;
+import com.t13max.persist.data.world.WorldData;
 import game.enums.WorldEnum;
+import org.bson.Document;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,6 +83,31 @@ public class WorldManager extends ManagerBase {
      */
     public World getWorld(WorldEnum worldEnum) {
         return this.worldMap.get(worldEnum.name());
+    }
+
+    /**
+     * 创建一个世界
+     *
+     * @Author t13max
+     * @Date 15:13 2024/8/2
+     */
+    public World createWorld() {
+        return null;
+    }
+
+    /**
+     * 加载一个世界
+     *
+     * @Author t13max
+     * @Date 15:31 2024/8/2
+     */
+    public World loadWorld(WorldEnum worldEnum) {
+        return loadWorld(worldEnum.name());
+    }
+
+    public World loadWorld(String name) {
+        WorldData worldData = DataManager.inst().findById(WorldData.class, new Document("_id", name));
+        return new World(worldData);
     }
 
 }

@@ -3,6 +3,7 @@ package com.t13max.game.world;
 import com.t13max.game.consts.Const;
 import com.t13max.game.util.Log;
 import com.t13max.game.world.module.WorldModules;
+import com.t13max.persist.data.world.WorldData;
 import com.t13max.util.TimeUtil;
 import game.enums.WorldEnum;
 import lombok.Getter;
@@ -24,9 +25,6 @@ public class World {
 
     //世界模块集合
     private WorldModules worldModules;
-
-    //世界类型
-    private WorldEnum worldEnum = WorldEnum.DEF_WORLD;
     //任务队列
     private final BlockingQueue<Runnable> taskQueue = new LinkedBlockingQueue<>();
     //当前世界的执行线程
@@ -35,9 +33,27 @@ public class World {
     private volatile boolean stop = false;
     //记录上次tick时间
     private long lastTickMills;
+    //世界持久化数据
+    private WorldData worldData;
+
 
     public World() {
         worldModules = new WorldModules(this);
+    }
+
+    public World(WorldData worldData) {
+        this();
+        this.worldData = worldData;
+    }
+
+    /**
+     * 获取世界名字 唯一
+     *
+     * @Author t13max
+     * @Date 17:31 2024/8/2
+     */
+    public String getName() {
+        return worldData.getName();
     }
 
     /**
@@ -47,7 +63,7 @@ public class World {
      * @Date 11:16 2024/7/15
      */
     public void load() {
-        worldEnum = WorldEnum.DEF_WORLD;
+        //worldEnum = WorldEnum.DEF_WORLD;
     }
 
     /**
@@ -136,7 +152,7 @@ public class World {
         try {
             boolean shutDown = worldExecutor.awaitTermination(5, TimeUnit.SECONDS);
             if (!shutDown) {
-                Log.game.error("{}停不下来啦! ", this.getWorldEnum());
+                Log.game.error("{}停不下来啦! ", this.getName());
                 worldExecutor.shutdownNow();
             }
         } catch (InterruptedException e) {
@@ -146,13 +162,14 @@ public class World {
 
     /**
      * 检测是否卡死
+     *
      * @Author t13max
      * @Date 17:00 2024/7/25
      */
     public void checkStuck() {
         long lastTickMills = this.lastTickMills;
         if (TimeUtil.nowMills() - lastTickMills > 1000) {
-            Log.game.error("延迟过高! world={}", this.getWorldEnum());
+            Log.game.error("延迟过高! world={}", this.getName());
             //后续增加其他处理
         }
     }

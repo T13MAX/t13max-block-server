@@ -1,6 +1,7 @@
 package com.t13max.persist.data.entity;
 
 import com.t13max.persist.data.inventory.ItemStackData;
+import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import game.enums.EquipPartsEnum;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @author: t13max
  * @since: 14:03 2024/7/15
  */
+@Entity
 @Data
 public class ZombieEntityData extends EntityData {
 

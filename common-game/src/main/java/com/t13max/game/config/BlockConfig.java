@@ -19,6 +19,9 @@ public class BlockConfig {
 
     private boolean test;
 
+    //数据相关的配置
+    private DataConfig data;
+
     static {
 
         Yaml yaml = new Yaml();

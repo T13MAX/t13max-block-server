@@ -32,11 +32,15 @@ public class WorldEntityMod extends WorldModule {
         this.entityMap.values().forEach(IEntity::tick);
     }
 
-    public IEntity addEntity(IEntity entity) {
-        return this.entityMap.put(entity.getId(), entity);
+    @Override
+    public void enterWorld(IEntity entity) {
+        this.entityMap.put(entity.getId(), entity);
     }
 
-    public IEntity removeEntity(IEntity entity) {
-        return this.entityMap.remove(entity.getId());
+    @Override
+    public void leaveWorld(IEntity entity) {
+        this.entityMap.remove(entity.getId());
     }
+
+
 }
