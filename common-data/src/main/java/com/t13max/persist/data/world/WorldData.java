@@ -1,6 +1,6 @@
 package com.t13max.persist.data.world;
 
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.IData;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import lombok.Data;
@@ -14,7 +14,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class WorldData implements IPersistData {
+public class WorldData implements IData {
 
     //使用名字作为唯一主键 理论上世界再多 也多不到哪去
     @Id

@@ -1,5 +1,6 @@
 package com.t13max.persist.data.entity;
 
+import com.t13max.persist.collection.XMap;
 import com.t13max.persist.data.inventory.InventoryData;
 import com.t13max.persist.data.inventory.ItemStackData;
 import dev.morphia.annotations.*;
@@ -32,5 +33,5 @@ public class PlayerData extends EntityData {
     //右手
     private ItemStackData leftHandItem = ItemStackData.EMPTY;
     //装备
-    private Map<EquipPartsEnum, ItemStackData> equipItemMap = new HashMap<>();
+    private Map<EquipPartsEnum, ItemStackData> equipItemMap = new XMap<>();
 }

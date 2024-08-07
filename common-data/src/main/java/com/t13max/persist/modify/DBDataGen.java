@@ -1,10 +1,9 @@
 package com.t13max.persist.modify;
 
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.IData;
 import com.t13max.util.PackageUtil;
 import com.t13max.util.StringUtil;
 import dev.morphia.annotations.Entity;
-import dev.morphia.query.Update;
 import javassist.*;
 
 import java.lang.reflect.Modifier;
@@ -24,7 +23,7 @@ public class DBDataGen {
         try {
             Set<Class<?>> classSet = PackageUtil.scanCache("com.t13max.persist.data");
             for (Class<?> clazz : classSet) {
-                if (!IPersistData.class.isAssignableFrom(clazz) || Modifier.isAbstract(clazz.getModifiers())) {
+                if (!IData.class.isAssignableFrom(clazz) || Modifier.isAbstract(clazz.getModifiers())) {
                     continue;
                 }
                 ClassPool cp = ClassPool.getDefault();

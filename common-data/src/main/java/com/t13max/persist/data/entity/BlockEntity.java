@@ -1,6 +1,6 @@
 package com.t13max.persist.data.entity;
 
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.IData;
 import dev.morphia.annotations.Entity;
 import lombok.Data;
 
@@ -13,5 +13,5 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class BlockEntity implements IPersistData {
+public class BlockEntity implements IData {
 }

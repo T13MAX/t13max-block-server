@@ -1,6 +1,6 @@
 package com.t13max.persist.data.entity;
 
-import com.t13max.persist.data.UnloadData;
+import com.t13max.persist.data.IData;
 import lombok.Data;
 
 /**
@@ -10,6 +10,6 @@ import lombok.Data;
  * @since: 15:29 2024/7/25
  */
 @Data
-public class EntityData extends UnloadData {
+public class EntityData implements IData {
 
 }

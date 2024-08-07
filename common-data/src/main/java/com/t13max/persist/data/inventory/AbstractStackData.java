@@ -1,5 +1,6 @@
 package com.t13max.persist.data.inventory;
 
+import com.t13max.persist.collection.XMap;
 import game.enums.ItemEnum;
 
 import java.util.HashMap;
@@ -16,5 +17,5 @@ public abstract class AbstractStackData implements IItemStack {
     //道具类型
     private ItemEnum itemEnum = ItemEnum.AIR_ITEM;
     //元数据
-    private Map<String, String> metaMap = new HashMap<>();
+    private Map<String, String> metaMap = new XMap<>();
 }

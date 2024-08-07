@@ -6,5 +6,5 @@ package com.t13max.persist.data;
  * @Author: t13max
  * @Since: 22:20 2024/7/14
  */
-public interface IPersistData {
+public interface IData {
 }

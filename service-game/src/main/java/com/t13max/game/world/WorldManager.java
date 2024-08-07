@@ -3,7 +3,7 @@ package com.t13max.game.world;
 import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.consts.Const;
 import com.t13max.game.world.task.TickTask;
-import com.t13max.persist.DataManager;
+import com.t13max.persist.manager.DataManager;
 import com.t13max.persist.data.world.WorldData;
 import game.enums.WorldEnum;
 import org.bson.Document;

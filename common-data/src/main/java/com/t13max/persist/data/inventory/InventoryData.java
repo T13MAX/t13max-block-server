@@ -1,5 +1,6 @@
 package com.t13max.persist.data.inventory;
 
+import com.t13max.persist.collection.XMap;
 import dev.morphia.annotations.Entity;
 import lombok.Data;
 
@@ -17,5 +18,5 @@ import java.util.Map;
 public class InventoryData {
 
     //背包列表 快捷工具栏10 背包30 从0开始
-    private Map<Integer, ItemStackData> itemStackMap = new HashMap();
+    private Map<Integer, ItemStackData> itemStackMap = new XMap<>();
 }

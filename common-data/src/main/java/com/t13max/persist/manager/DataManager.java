@@ -1,4 +1,4 @@
-package com.t13max.persist;
+package com.t13max.persist.manager;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -8,7 +8,7 @@ import com.mongodb.connection.ConnectionPoolSettings;
 import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.config.BlockConfig;
 import com.t13max.game.config.DataConfig;
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.IData;
 import dev.morphia.Datastore;
 import dev.morphia.DeleteOptions;
 import dev.morphia.InsertOneOptions;
@@ -16,8 +16,7 @@ import dev.morphia.Morphia;
 import dev.morphia.query.filters.Filters;
 import org.bson.Document;
 
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,17 +25,18 @@ import java.util.concurrent.TimeUnit;
  * 存库队列异步保存 world的线程定期触发把变化的数据扔到存库队列 存库队列慢慢保存
  * 保存完成后 通知world存完了 如果是可以卸载的数据 就可以卸载了
  * 卸载需要没有对象加载它持续一定时间才会触发
+ * <p>
+ * TODO 补充 异常处理 失败重试
  *
  * @Author: t13max
  * @Since: 22:16 2024/7/14
  */
 public class DataManager extends ManagerBase {
 
+    //mongodb客户端
     private MongoClient mongoClient;
-
+    //java类映射
     private Datastore datastore;
-
-    private final Queue<IPersistData> persistQueue = new LinkedBlockingQueue<>();
 
     public static DataManager inst() {
         return inst(DataManager.class);
@@ -71,6 +71,7 @@ public class DataManager extends ManagerBase {
 
         // 创建Datastore并连接到数据库
         datastore = Morphia.createDatastore(mongoClient, dataConfig.getDatabase());
+
     }
 
     /**
@@ -79,11 +80,11 @@ public class DataManager extends ManagerBase {
      * @Author t13max
      * @Date 15:51 2024/8/2
      */
-    public <T extends IPersistData> T findById(Class<T> clazz, long id) {
+    public <T extends IData> T findById(Class<T> clazz, long id) {
         return datastore.find(clazz, new Document("_id", id)).first();
     }
 
-    public <T extends IPersistData> T findById(String collectionName, long id) {
+    public <T extends IData> T findById(String collectionName, long id) {
         return (T) datastore.find(collectionName).filter(Filters.eq("_id", id)).first();
     }
 
@@ -93,7 +94,7 @@ public class DataManager extends ManagerBase {
      * @Author t13max
      * @Date 15:51 2024/8/2
      */
-    public <T extends IPersistData> T findById(Class<T> clazz, Document filter) {
+    public <T extends IData> T findById(Class<T> clazz, Document filter) {
         return datastore.find(clazz, filter).first();
     }
 
@@ -103,14 +104,27 @@ public class DataManager extends ManagerBase {
      * @Author t13max
      * @Date 15:51 2024/8/2
      */
-    public <T extends IPersistData> boolean delete(T data) {
+    public <T extends IData> boolean delete(T data) {
         DeleteResult deleteResult = datastore.delete(data);
         return deleteResult.getDeletedCount() > 0;
     }
 
-    public <T extends IPersistData> boolean delete(String collectionName, T data) {
+    public <T extends IData> boolean delete(String collectionName, T data) {
         DeleteResult deleteResult = datastore.delete(data, new DeleteOptions().collection(collectionName));
         return deleteResult.getDeletedCount() > 0;
+    }
+
+    /**
+     * 批量删除
+     *
+     * @Author t13max
+     * @Date 16:43 2024/8/7
+     */
+    public <T extends IData> boolean deleteList(List<T> dataList) {
+        for (T data : dataList) {
+            this.delete(data);
+        }
+        return true;
     }
 
     /**
@@ -119,7 +133,7 @@ public class DataManager extends ManagerBase {
      * @Author t13max
      * @Date 15:53 2024/8/2
      */
-    public <T extends IPersistData> T save(T data) {
+    public <T extends IData> T save(T data) {
         return datastore.save(data);
     }
 
@@ -129,8 +143,21 @@ public class DataManager extends ManagerBase {
      * @Author t13max
      * @Date 16:19 2024/8/2
      */
-    public <T extends IPersistData> T save(T data, String collectionName) {
+    public <T extends IData> T save(T data, String collectionName) {
         return datastore.save(data, new InsertOneOptions().collection(collectionName));
+    }
+
+    /**
+     * 批量保存
+     *
+     * @Author t13max
+     * @Date 16:35 2024/8/7
+     */
+    public <T extends IData> boolean saveList(List<T> dataList) {
+        for (T data : dataList) {
+            save(data);
+        }
+        return true;
     }
 
 

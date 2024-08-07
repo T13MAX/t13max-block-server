@@ -1,12 +1,12 @@
 package com.t13max.persist.data.entity;
 
+import com.t13max.persist.collection.XMap;
 import com.t13max.persist.data.inventory.ItemStackData;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import game.enums.EquipPartsEnum;
 import lombok.Data;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,7 +26,7 @@ public class ZombieEntityData extends EntityData {
     //右手
     private ItemStackData leftHandItem = ItemStackData.EMPTY;
     //装备
-    private Map<EquipPartsEnum, ItemStackData> equipItemMap = new HashMap<>();
+    private Map<EquipPartsEnum, ItemStackData> equipItemMap = new XMap<>();
     //元数据 value灵活运用
-    private Map<String, String> metaMap = new HashMap<>();
+    private Map<String, String> metaMap = new XMap<>();
 }

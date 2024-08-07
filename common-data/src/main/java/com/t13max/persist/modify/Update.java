@@ -1,13 +1,12 @@
 package com.t13max.persist.modify;
 
 
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.data.IData;
 
 public interface Update {
 
     static Option state(Object obj) {
-        if (obj instanceof Update) {
-            Update update = (Update) obj;
+        if (obj instanceof Update update) {
             byte option = update.option();
             if (Option.INSERT.match(option)) {
                 update.clear();
@@ -20,7 +19,7 @@ public interface Update {
         return Option.NONE;
     }
 
-    static boolean saveAble(IPersistData data) {
+    static boolean saveAble(IData data) {
         return state(data) != Option.NONE;
     }
 
@@ -28,25 +27,25 @@ public interface Update {
 
     public void clear();
 
-    public <T extends IPersistData> byte option();
+    public <T extends IData> byte option();
 
     public void insert();
 
-    static <T extends IPersistData> void insert(T t) {
+    static <T extends IData> void insert(T t) {
         if (t instanceof Update) {
             Update update = (Update) t;
             update.insert();
         }
     }
 
-    static <T extends IPersistData> void update(T t) {
+    static <T extends IData> void update(T t) {
         if (t instanceof Update) {
             Update update = (Update) t;
             update.update();
         }
     }
 
-    static <T extends IPersistData> void clear(T t) {
+    static <T extends IData> void clear(T t) {
         if (t instanceof Update) {
             Update update = (Update) t;
             update.clear();

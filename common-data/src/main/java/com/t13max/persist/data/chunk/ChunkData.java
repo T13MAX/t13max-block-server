@@ -1,14 +1,13 @@
 package com.t13max.persist.data.chunk;
 
 import com.t13max.game.util.PosUtil;
-import com.t13max.persist.data.IPersistData;
-import com.t13max.persist.data.UnloadData;
+import com.t13max.persist.collection.XMap;
+import com.t13max.persist.data.IData;
 import com.t13max.persist.data.entity.EntityData;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
 import lombok.Data;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,16 +19,16 @@ import java.util.Map;
  */
 @Entity
 @Data
-public class ChunkData extends UnloadData {
+public class ChunkData implements IData {
 
     @Id
     private long chunkId;//区块id 由两个int的xy拼成
 
     //key是方块在当前区块的位置 8位存高度 4位存x 4位存y
-    private Map<Short, Short> blockDataMap = new HashMap<>();
+    private Map<Short, Short> blockDataMap = new XMap<>();
 
     //实体对象不会太多 全存
-    private Map<Integer, EntityData> entityDataMap = new HashMap<>();
+    private Map<Integer, EntityData> entityDataMap = new XMap<>();
 
     public ChunkData() {
     }

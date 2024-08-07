@@ -1,10 +1,8 @@
 package com.t13max.game.world.module;
 
 import com.t13max.game.consts.Const;
-import com.t13max.game.entity.IEntity;
 import com.t13max.game.world.World;
-import com.t13max.persist.DataManager;
-import com.t13max.persist.data.IPersistData;
+import com.t13max.persist.manager.DataManager;
 import com.t13max.persist.data.chunk.ChunkData;
 import lombok.Getter;
 
