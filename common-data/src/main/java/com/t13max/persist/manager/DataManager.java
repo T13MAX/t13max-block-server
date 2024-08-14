@@ -84,7 +84,13 @@ public class DataManager extends ManagerBase {
         return datastore.find(clazz, new Document("_id", id)).first();
     }
 
-    public <T extends IData> T findById(String collectionName, long id) {
+    /**
+     * 根据id查找数据 id是int  给区块用的
+     *
+     * @Author t13max
+     * @Date 15:25 2024/8/14
+     */
+    public <T extends IData> T findById(String collectionName, int id) {
         return (T) datastore.find(collectionName).filter(Filters.eq("_id", id)).first();
     }
 

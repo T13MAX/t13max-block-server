@@ -2,6 +2,7 @@ package com.t13max.persist.data.inventory;
 
 import dev.morphia.annotations.Entity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 道具

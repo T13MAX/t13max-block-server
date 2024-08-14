@@ -1,6 +1,11 @@
 package com.t13max.game.world;
 
+import com.google.protobuf.MessageLite;
+import com.t13max.common.msg.MessageManager;
+import com.t13max.common.msg.MessagePack;
+import com.t13max.common.session.ISession;
 import com.t13max.game.consts.Const;
+import com.t13max.game.entity.IEntity;
 import com.t13max.game.util.Log;
 import com.t13max.game.world.module.WorldModules;
 import com.t13max.persist.data.world.WorldData;
@@ -67,6 +72,16 @@ public class World {
     }
 
     /**
+     * 卸载世界
+     *
+     * @Author t13max
+     * @Date 14:12 2024/8/14
+     */
+    public void unload() {
+
+    }
+
+    /**
      * 世界开始运行
      *
      * @Author t13max
@@ -78,6 +93,8 @@ public class World {
 
     /**
      * 执行tick
+     * 目前是50ms一次tick 后续视情况可优化拆分帧
+     * 把一些重要 特殊的帧单独tick
      *
      * @Author t13max
      * @Date 11:30 2024/7/15
@@ -85,6 +102,18 @@ public class World {
     public void tick() {
 
         this.worldModules.tick();
+    }
+
+    /**
+     * 校验是否需要暂停tick
+     * 所有区块都被卸载 则停止tick
+     *
+     * @Author t13max
+     * @Date 14:20 2024/8/14
+     */
+    public boolean checkStopTick() {
+
+        return false;
     }
 
     /**
@@ -152,7 +181,7 @@ public class World {
         try {
             boolean shutDown = worldExecutor.awaitTermination(5, TimeUnit.SECONDS);
             if (!shutDown) {
-                Log.game.error("{}停不下来啦! ", this.getName());
+                Log.world.error("{}停不下来啦! ", this.getName());
                 worldExecutor.shutdownNow();
             }
         } catch (InterruptedException e) {
@@ -169,8 +198,70 @@ public class World {
     public void checkStuck() {
         long lastTickMills = this.lastTickMills;
         if (TimeUtil.nowMills() - lastTickMills > 1000) {
-            Log.game.error("延迟过高! world={}", this.getName());
+            Log.world.error("延迟过高! world={}", this.getName());
             //后续增加其他处理
         }
+    }
+
+    /**
+     * 实体进入世界
+     * 上线 通过传送门进入某个世界
+     *
+     * @Author t13max
+     * @Date 14:03 2024/8/14
+     */
+    public void enterWorld(IEntity entity) {
+
+    }
+
+    /**
+     * 实体离开世界
+     * 下线 通过传送门离开某个世界
+     *
+     * @Author t13max
+     * @Date 14:03 2024/8/14
+     */
+    public void leaveWorld(IEntity entity) {
+
+    }
+
+    /**
+     * 实体移动
+     *
+     * @Author t13max
+     * @Date 14:10 2024/8/14
+     */
+    public void onObjectMoved(IEntity entity) {
+
+    }
+
+    /**
+     * 给某位玩家发送消息
+     *
+     * @Author t13max
+     * @Date 14:37 2024/8/14
+     */
+    public <T extends MessageLite> void sendMsg(long playerId, MessagePack<T> messagePack) {
+
+    }
+
+    /**
+     * 给某些玩家发送消息
+     *
+     * @Author t13max
+     * @Date 14:37 2024/8/14
+     */
+    public <T extends MessageLite> void sendMsg(List<Long> playerIds, MessagePack<T> messagePack) {
+
+    }
+
+    /**
+     * 给全部玩家发送消息
+     *
+     * @Author t13max
+     * @Date 14:38 2024/8/14
+     */
+    public <T extends MessageLite> void sendMsg(MessagePack<T> messagePack) {
+
     }
 }

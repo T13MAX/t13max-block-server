@@ -24,6 +24,8 @@ public class AutoSaveManager extends ManagerBase {
 
     //存库线程
     private final ScheduledExecutorService saveDataExecutor = Executors.newSingleThreadScheduledExecutor();
+    //新老对象的映射 用于设置状态
+    private final Map<IData, IData> newOldDataMap;
     //三个异步入库队列
     private final Map<Class<? extends IData>, LinkedBlockingQueue<? extends IData>> insertDataMap;
     private final Map<Class<? extends IData>, LinkedBlockingQueue<? extends IData>> updateDataMap;
@@ -37,6 +39,7 @@ public class AutoSaveManager extends ManagerBase {
         this.insertDataMap = new ConcurrentHashMap<>();
         this.updateDataMap = new ConcurrentHashMap<>();
         this.deleteDataMap = new ConcurrentHashMap<>();
+        this.newOldDataMap = new ConcurrentHashMap<>();
     }
 
     public static AutoSaveManager inst() {

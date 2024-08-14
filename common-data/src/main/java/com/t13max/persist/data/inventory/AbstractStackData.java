@@ -2,8 +2,8 @@ package com.t13max.persist.data.inventory;
 
 import com.t13max.persist.collection.XMap;
 import game.enums.ItemEnum;
+import lombok.Data;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,6 +12,7 @@ import java.util.Map;
  * @author: t13max
  * @since: 14:43 2024/7/15
  */
+@Data
 public abstract class AbstractStackData implements IItemStack {
 
     //道具类型

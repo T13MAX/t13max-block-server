@@ -1,5 +1,6 @@
 package com.t13max.game.pos;
 
+import com.t13max.game.consts.Const;
 import lombok.Data;
 
 import java.util.Objects;
@@ -13,11 +14,11 @@ import java.util.Objects;
 @Data
 public class Position {
 
-    private int x;
+    private short x;
 
-    private int y;
+    private short y;
 
-    private int z;
+    private short z;
 
     /**
      * 空参构造
@@ -35,8 +36,8 @@ public class Position {
      * @Date 13:44 2024/7/15
      */
     public Position(int x, int z) {
-        this.x = x;
-        this.z = z;
+        this.x = (short) x;
+        this.z = (short) z;
     }
 
     /**
@@ -46,9 +47,17 @@ public class Position {
      * @Date 13:44 2024/7/15
      */
     public Position(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.x = (short) x;
+        this.y = (short) y;
+        this.z = (short) z;
+    }
+
+    public short getChunkX() {
+        return (short)(x / Const.CHUNK_LENGTH);
+    }
+
+    public short getChunkZ() {
+        return (short)(z / Const.CHUNK_LENGTH);
     }
 
     /**

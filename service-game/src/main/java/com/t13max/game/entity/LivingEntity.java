@@ -10,10 +10,10 @@ import lombok.Getter;
  * @since: 15:57 2024/7/25
  */
 
+@Getter
 public abstract class LivingEntity extends Entity {
 
     //模块合集
-    @Getter
     private EntityModules entityModules;
 
 

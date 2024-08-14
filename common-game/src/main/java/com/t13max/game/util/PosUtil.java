@@ -1,5 +1,6 @@
 package com.t13max.game.util;
 
+import com.t13max.game.pos.Position;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -11,9 +12,9 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class PosUtil {
 
-    private int mask_8 = 0xff;
-    private int mask_16 = 0xffff;
-    private int mask_32 = 0xffffffff;
+    private final int mask_8 = 0xff;
+    private final int mask_16 = 0xffff;
+    private final int mask_32 = 0xffffffff;
 
 
     public int getX(short pos) {
@@ -28,11 +29,11 @@ public class PosUtil {
         return pos >>> 16;
     }
 
-    public int getChunkX(long chunkId, short pos) {
+    public int getChunkX(int chunkId, short pos) {
         return getChunkX(chunkId) * 16 + getX(pos);
     }
 
-    public int getChunkZ(long chunkId, short pos) {
+    public int getChunkZ(int chunkId, short pos) {
         return getChunkZ(chunkId) * 16 + getZ(pos);
     }
 
@@ -40,15 +41,29 @@ public class PosUtil {
         return (short) (y << 16 + z << 8 + x);
     }
 
-    public int getChunkX(long chunkId) {
-        return (int) (chunkId & mask_32);
+    /**
+     * 获取区块的x坐标
+     *
+     * @Author t13max
+     * @Date 15:16 2024/8/14
+     */
+    public short getChunkX(int chunkId) {
+        return (short) (chunkId & mask_16);
     }
 
-    public int getChunkZ(long chunkId) {
-        return (int) (chunkId >> 32 & mask_32);
+    public short getChunkZ(int chunkId) {
+        return (short) (chunkId >> 16 & mask_16);
     }
 
-    public long getChunkId(int x, int z) {
-        return ((long) z) << 32 + x;
+    public int getChunkId(short x, short z) {
+        return ((int) z) << 16 + x;
+    }
+
+    public int getChunkId(int x, int z) {
+        return getChunkId((short) x, (short) z);
+    }
+
+    public int getChunkId(Position position) {
+        return getChunkId(position.getChunkX(), position.getChunkZ());
     }
 }

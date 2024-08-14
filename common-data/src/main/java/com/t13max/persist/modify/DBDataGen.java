@@ -39,6 +39,7 @@ public class DBDataGen {
                 ctClass.addInterface(cp.get(Update.class.getName()));
                 ctClass.addField(CtField.make("public volatile byte _option;", ctClass));
                 ctClass.addMethod(CtMethod.make("public void clear(){ _option = 0;}", ctClass));
+                ctClass.addMethod(CtMethod.make("public void saving(){ _option = 5;}", ctClass));
                 ctClass.addMethod(CtMethod.make("public byte option(){ return _option;}", ctClass));
                 CtMethod[] declaredMethods = ctClass.getDeclaredMethods();
                 for (CtMethod method : declaredMethods) {
@@ -56,7 +57,7 @@ public class DBDataGen {
                     } else if (methodName.startsWith("get")) {
                         CtClass returnType = method.getReturnType();
                         if (isDBContainer(returnType)) {
-                            String temp = methodName.substring(3, methodName.length());
+                            String temp = methodName.substring(3);
                             String fieldName = StringUtil.toLowerCaseFirstOne(temp);
                             method.insertAfter("if(" + fieldName + " != null){" + fieldName + ".setUpdate($0);}");
                         }

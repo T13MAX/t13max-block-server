@@ -2,6 +2,7 @@ package com.t13max.game.world;
 
 import com.t13max.common.manager.ManagerBase;
 import com.t13max.game.consts.Const;
+import com.t13max.game.util.Log;
 import com.t13max.game.world.task.TickTask;
 import com.t13max.persist.manager.DataManager;
 import com.t13max.persist.data.world.WorldData;
@@ -22,10 +23,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class WorldManager extends ManagerBase {
 
-    private ScheduledExecutorService worldManagerExecutor = Executors.newSingleThreadScheduledExecutor();
+    private final ScheduledExecutorService worldManagerExecutor = Executors.newSingleThreadScheduledExecutor();
 
     //world缓存 要不要线程安全?
-    private Map<String, World> worldMap = new HashMap<>();
+    private final Map<String, World> worldMap = new HashMap<>();
 
     public static WorldManager inst() {
         return ManagerBase.inst(WorldManager.class);
@@ -61,7 +62,10 @@ public class WorldManager extends ManagerBase {
             //检查卡死
             world.checkStuck();
             //添加tick任务
-            world.addTask(new TickTask(world));
+            if (!world.addTask(new TickTask(world))) {
+                //理论上 他永远不会满 而且卡死有其他地方检测
+                Log.world.error("世界主线程任务满了");
+            }
         }
     }
 

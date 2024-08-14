@@ -17,4 +17,8 @@ public interface Const {
     int CHUNK_LENGTH = 16;
     //区块字符串
     String CHUNK_NAME = "chunk";
+    //区块数量
+    short CHUNK_NUM = 1024;
+    //世界边长 1024*16==16384;
+    short MAX_LENGTH = CHUNK_NUM * CHUNK_LENGTH;
 }
