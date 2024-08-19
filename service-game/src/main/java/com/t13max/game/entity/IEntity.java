@@ -2,6 +2,7 @@ package com.t13max.game.entity;
 
 import com.t13max.game.entity.module.EntityModules;
 import com.t13max.game.pos.Position;
+import com.t13max.persist.data.entity.EntityData;
 
 /**
  * 实体顶级接口
@@ -22,4 +23,6 @@ public interface IEntity extends EntityQuery {
 
     //获取当前实体所在位置
     Position getPosition();
+
+    EntityData getEntityData();
 }

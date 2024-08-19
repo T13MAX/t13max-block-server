@@ -12,7 +12,7 @@ import com.t13max.persist.data.chunk.ChunkData;
 public class NoiseChunkGenerator extends ChunkGenerator {
 
     @Override
-    public ChunkData generateChunkData(long pos) {
+    public ChunkData generateChunkData(int pos) {
         return null;
     }
 }

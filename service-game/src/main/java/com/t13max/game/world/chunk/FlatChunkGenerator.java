@@ -23,7 +23,7 @@ public class FlatChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public ChunkData generateChunkData(long chunkId) {
+    public ChunkData generateChunkData(int chunkId) {
         ChunkData chunkData = new ChunkData(chunkId);
         Map<Short, Short> blockDataMap = chunkData.getBlockDataMap();
         int y = 0;
@@ -41,7 +41,7 @@ public class FlatChunkGenerator extends ChunkGenerator {
         return null;
     }
 
-    record FlatPair(BlockEnum blockEnum, Integer layer) {
+    public record FlatPair(BlockEnum blockEnum, Integer layer) {
 
     }
 }

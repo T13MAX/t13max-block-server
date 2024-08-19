@@ -11,6 +11,7 @@ import org.bson.Document;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +27,7 @@ public class WorldManager extends ManagerBase {
     private final ScheduledExecutorService worldManagerExecutor = Executors.newSingleThreadScheduledExecutor();
 
     //world缓存 要不要线程安全?
-    private final Map<String, World> worldMap = new HashMap<>();
+    private final Map<String, World> worldMap = new ConcurrentHashMap<>();
 
     public static WorldManager inst() {
         return ManagerBase.inst(WorldManager.class);

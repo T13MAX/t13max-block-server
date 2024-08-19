@@ -1,6 +1,7 @@
 package com.t13max.persist.data.entity;
 
 import com.t13max.persist.data.IData;
+import game.enums.EntityEnum;
 import lombok.Data;
 
 /**
@@ -11,5 +12,9 @@ import lombok.Data;
  */
 @Data
 public class EntityData implements IData {
+
+    //所属类型
+    private EntityEnum entityEnum;
+
 
 }

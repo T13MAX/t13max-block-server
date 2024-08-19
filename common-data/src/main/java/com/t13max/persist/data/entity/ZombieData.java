@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @Entity
 @Data
-public class ZombieEntityData extends EntityData {
+public class ZombieData extends EntityData {
 
     @Id
     private long id;

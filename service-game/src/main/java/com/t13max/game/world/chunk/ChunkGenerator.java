@@ -8,7 +8,7 @@ import com.t13max.persist.data.chunk.ChunkData;
  */
 public abstract class ChunkGenerator {
 
-    public abstract ChunkData generateChunkData(long chunkId);
+    public abstract ChunkData generateChunkData(int chunkId);
 
 
 }

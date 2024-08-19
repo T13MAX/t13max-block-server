@@ -65,6 +65,7 @@ public class WorldModules {
     }
 
     public void tick() {
+        //是不是应该控制一下顺序?
         this.moduleMap.values().forEach(WorldModule::tick);
     }
 }

@@ -13,13 +13,13 @@ import lombok.Getter;
 @Getter
 public abstract class Entity implements IEntity {
 
-    private long id;
+    protected long id;
 
     //所在世界
-    private World world;
+    protected World world;
 
     //所在位置
-    private Position position;
+    protected Position position;
 
     public Entity() {
     }

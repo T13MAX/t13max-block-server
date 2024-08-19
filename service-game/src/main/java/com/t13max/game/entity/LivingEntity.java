@@ -14,7 +14,7 @@ import lombok.Getter;
 public abstract class LivingEntity extends Entity {
 
     //模块合集
-    private EntityModules entityModules;
+    protected EntityModules entityModules;
 
 
 }

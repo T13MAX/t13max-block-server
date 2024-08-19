@@ -26,7 +26,7 @@ public class ChunkData implements IData {
     //key是方块在当前区块的位置 8位存高度 4位存x 4位存y
     private Map<Short, Short> blockDataMap = new XMap<>();
 
-    //实体对象不会太多 全存
+    //实体对象不会太多 全存 理论上 被命名的实体才会序列化 其他实体在序列化之前就删掉了
     private Map<Short, EntityData> entityDataMap = new XMap<>();
 
     public ChunkData() {

@@ -41,6 +41,10 @@ public class PosUtil {
         return (short) (y << 16 + z << 8 + x);
     }
 
+    public short getPos(Position position) {
+        return (short) (position.getY() << 16 + position.getZ() << 8 + position.getX());
+    }
+
     /**
      * 获取区块的x坐标
      *

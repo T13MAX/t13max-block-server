@@ -29,6 +29,7 @@ public class WorldEntityMod extends WorldModule {
      */
     @Override
     public void tick() {
+        //是否应该移到区块tick内?
         this.entityMap.values().forEach(IEntity::tick);
     }
 
