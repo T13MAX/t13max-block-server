@@ -45,6 +45,7 @@ public abstract class WorldModule {
     /**
      * 实体进入世界
      * 上线 通过传送门进入某个世界
+     * 被WorldModules调用
      *
      * @Author t13max
      * @Date 14:03 2024/8/14

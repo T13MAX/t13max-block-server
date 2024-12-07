@@ -16,7 +16,6 @@ import game.enums.BlockEnum;
 import lombok.Getter;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 /**
  * 区块管理模块
@@ -37,7 +36,7 @@ public class WorldChunkMod extends WorldModule {
     public WorldChunkMod(World world) {
         super(world);
         //后续增加读取配置 创建各种ChunkGenerator
-        this.chunkGenerator = new FlatChunkGenerator(Arrays.asList(new FlatChunkGenerator.FlatPair(BlockEnum.BED_BLOCK, 1), new FlatChunkGenerator.FlatPair(BlockEnum.DIRTY_BLOCK, 3)));
+        this.chunkGenerator = new FlatChunkGenerator(Arrays.asList(new FlatChunkGenerator.FlatGroup(BlockEnum.BED_BLOCK, 1), new FlatChunkGenerator.FlatGroup(BlockEnum.DIRTY_BLOCK, 3)));
     }
 
     public Chunk loadChunk(int chunkId) {
@@ -129,6 +128,8 @@ public class WorldChunkMod extends WorldModule {
         oldChunk.leaveWorld(entity);
         //加到新的里面
         newChunk.enterWorld(entity);
+        //实体区块变化
+        entity.onChunkChanged(oldChunk, newChunk);
     }
 
     /**

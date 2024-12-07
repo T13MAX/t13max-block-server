@@ -6,5 +6,5 @@ package com.t13max.game.entity;
  * @author: t13max
  * @since: 14:15 2024/7/26
  */
-public class MobEntity extends LivingEntity {
+public abstract class MobEntity extends LivingEntity {
 }

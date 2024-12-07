@@ -2,6 +2,7 @@ package com.t13max.game.world.chunk;
 
 import com.t13max.game.entity.EntityFactory;
 import com.t13max.game.entity.IEntity;
+import com.t13max.game.pos.Position;
 import com.t13max.game.util.PosUtil;
 import com.t13max.persist.data.chunk.ChunkData;
 import com.t13max.persist.data.entity.EntityData;
@@ -76,6 +77,40 @@ public class Chunk {
     public boolean checkUnload() {
 
         return false;
+    }
+
+    /**
+     * 判断指定格子在当前格子的哪个方向
+     *
+     * @Author t13max
+     * @Date 16:20 2024/12/6
+     */
+    public int where(final Chunk other) {
+        short chunkX = PosUtil.getChunkX(this.chunkId);
+        short chunkZ = PosUtil.getChunkZ(this.chunkId);
+        short otherX = PosUtil.getChunkX(other.chunkId);
+        short otherZ = PosUtil.getChunkZ(other.chunkId);
+        if (chunkX == otherX && otherZ == chunkZ) {
+            return Position.DIR_SELF;
+        } else if (chunkX == otherX && otherZ + 1 == chunkZ) {
+            return Position.DIR_UP;
+        } else if (chunkX + 1 == otherX && otherZ + 1 == chunkZ) {
+            return Position.DIR_RIGHT_UP;
+        } else if (chunkX + 1 == otherX && otherZ == chunkZ) {
+            return Position.DIR_RIGHT;
+        } else if (chunkX + 1 == otherX && chunkZ + 1 == otherZ) {
+            return Position.DIR_RIGHT_DOWN;
+        } else if (chunkX == otherX && chunkZ + 1 == otherZ) {
+            return Position.DIR_DOWN;
+        } else if (otherX + 1 == chunkX && chunkZ + 1 == otherZ) {
+            return Position.DIR_LEFT_DOWN;
+        } else if (otherX + 1 == chunkX && otherZ == chunkZ) {
+            return Position.DIR_LEFT;
+        } else if (otherX + 1 == chunkX && otherZ + 1 == chunkZ) {
+            return Position.DIR_LEFT_UP;
+        }
+        //不相邻点
+        return Position.DIR_UNKNOWN;
     }
 
 }

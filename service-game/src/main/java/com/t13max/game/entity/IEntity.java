@@ -2,6 +2,8 @@ package com.t13max.game.entity;
 
 import com.t13max.game.entity.module.EntityModules;
 import com.t13max.game.pos.Position;
+import com.t13max.game.world.World;
+import com.t13max.game.world.chunk.Chunk;
 import com.t13max.persist.data.entity.EntityData;
 
 /**
@@ -25,4 +27,12 @@ public interface IEntity extends EntityQuery {
     Position getPosition();
 
     EntityData getEntityData();
+
+    void enterWorld(World world);
+
+    void leaveWorld(World world);
+
+    void changePosition(Position newPos);
+
+    void onChunkChanged(Chunk leaveChunk, Chunk enterChunk);
 }

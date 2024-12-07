@@ -1,6 +1,8 @@
 package com.t13max.game.world.module;
 
+import com.t13max.game.entity.IEntity;
 import com.t13max.game.exception.GameException;
+import com.t13max.game.pos.Position;
 import com.t13max.game.world.World;
 import com.t13max.util.PackageUtil;
 import lombok.Getter;
@@ -64,8 +66,44 @@ public class WorldModules {
         return (T) moduleMap.get(clazz);
     }
 
+    /**
+     * tick
+     *
+     * @Author t13max
+     * @Date 15:48 2024/12/6
+     */
     public void tick() {
         //是不是应该控制一下顺序?
         this.moduleMap.values().forEach(WorldModule::tick);
+    }
+
+    /**
+     * 实体进入世界 被对应的世界调用
+     *
+     * @Author t13max
+     * @Date 15:43 2024/12/6
+     */
+    public void enterWorld(IEntity entity) {
+        this.moduleMap.values().forEach(module -> module.enterWorld(entity));
+    }
+
+    /**
+     * 实体离开世界
+     *
+     * @Author t13max
+     * @Date 15:44 2024/12/6
+     */
+    public void leaveWorld(IEntity entity) {
+        this.moduleMap.values().forEach(module -> module.leaveWorld(entity));
+    }
+
+    /**
+     * 实体移动
+     *
+     * @Author t13max
+     * @Date 14:10 2024/8/14
+     */
+    public void onEntityMoved(IEntity entity, Position oldPos, Position newPos) {
+        this.moduleMap.values().forEach(module -> module.onEntityMoved(entity, oldPos, newPos));
     }
 }

@@ -14,6 +14,29 @@ import java.util.Objects;
 @Data
 public class Position {
 
+    //未知
+    public static final int DIR_UNKNOWN = -1;
+    //就是自己
+    public static final int DIR_SELF = 0;
+    //上
+    public static final int DIR_UP = 1;
+    //右上
+    public static final int DIR_RIGHT_UP = 2;
+    //右
+    public static final int DIR_RIGHT = 3;
+    //右下
+    public static final int DIR_RIGHT_DOWN = 4;
+    //下
+    public static final int DIR_DOWN = 5;
+    //左下
+    public static final int DIR_LEFT_DOWN = 6;
+    //左
+    public static final int DIR_LEFT = 7;
+    //左上
+    public static final int DIR_LEFT_UP = 8;
+    //全部方向的数目
+    public static final int DIR_NUM = 8;
+
     private short x;
 
     private short y;
@@ -53,11 +76,11 @@ public class Position {
     }
 
     public short getChunkX() {
-        return (short)(x / Const.CHUNK_LENGTH);
+        return (short) (x / Const.CHUNK_LENGTH);
     }
 
     public short getChunkZ() {
-        return (short)(z / Const.CHUNK_LENGTH);
+        return (short) (z / Const.CHUNK_LENGTH);
     }
 
     /**

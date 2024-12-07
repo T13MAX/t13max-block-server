@@ -1,6 +1,7 @@
 package com.t13max.game.entity;
 
 import com.t13max.game.entity.module.EntityModules;
+import com.t13max.persist.data.entity.EntityData;
 
 /**
  * @author: t13max
@@ -10,6 +11,11 @@ public class ItemEntity extends Entity{
 
     @Override
     public EntityModules getEntityModules() {
+        return null;
+    }
+
+    @Override
+    public EntityData getEntityData() {
         return null;
     }
 

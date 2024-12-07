@@ -16,9 +16,9 @@ import java.util.Map;
  */
 public class FlatChunkGenerator extends ChunkGenerator {
 
-    private final List<FlatPair> flatList;
+    private final List<FlatGroup> flatList;
 
-    public FlatChunkGenerator(List<FlatPair> flatList) {
+    public FlatChunkGenerator(List<FlatGroup> flatList) {
         this.flatList = flatList;
     }
 
@@ -27,7 +27,7 @@ public class FlatChunkGenerator extends ChunkGenerator {
         ChunkData chunkData = new ChunkData(chunkId);
         Map<Short, Short> blockDataMap = chunkData.getBlockDataMap();
         int y = 0;
-        for (FlatPair pair : flatList) {
+        for (FlatGroup pair : flatList) {
             short blockId = (short) pair.blockEnum.getNumber();
             for (int i = 0; i < pair.layer; i++) {
                 for (int j = 0; j < Const.CHUNK_LENGTH; j++) {
@@ -41,7 +41,7 @@ public class FlatChunkGenerator extends ChunkGenerator {
         return null;
     }
 
-    public record FlatPair(BlockEnum blockEnum, Integer layer) {
+    public record FlatGroup(BlockEnum blockEnum, Integer layer) {
 
     }
 }

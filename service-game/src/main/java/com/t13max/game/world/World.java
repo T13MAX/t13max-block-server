@@ -6,6 +6,7 @@ import com.t13max.common.msg.MessagePack;
 import com.t13max.common.session.ISession;
 import com.t13max.game.consts.Const;
 import com.t13max.game.entity.IEntity;
+import com.t13max.game.pos.Position;
 import com.t13max.game.util.Log;
 import com.t13max.game.world.module.WorldModules;
 import com.t13max.persist.data.world.WorldData;
@@ -211,7 +212,7 @@ public class World {
      * @Date 14:03 2024/8/14
      */
     public void enterWorld(IEntity entity) {
-
+        worldModules.enterWorld(entity);
     }
 
     /**
@@ -222,7 +223,7 @@ public class World {
      * @Date 14:03 2024/8/14
      */
     public void leaveWorld(IEntity entity) {
-
+        worldModules.leaveWorld(entity);
     }
 
     /**
@@ -231,8 +232,8 @@ public class World {
      * @Author t13max
      * @Date 14:10 2024/8/14
      */
-    public void onObjectMoved(IEntity entity) {
-
+    public void onObjectMoved(IEntity entity, Position oldPos, Position newPos) {
+        worldModules.onEntityMoved(entity,oldPos,newPos);
     }
 
     /**
