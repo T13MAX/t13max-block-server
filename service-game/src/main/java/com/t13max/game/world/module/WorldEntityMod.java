@@ -43,5 +43,8 @@ public class WorldEntityMod extends WorldModule {
         this.entityMap.remove(entity.getId());
     }
 
+    public IEntity getEntity(long id) {
+        return entityMap.get(id);
+    }
 
 }

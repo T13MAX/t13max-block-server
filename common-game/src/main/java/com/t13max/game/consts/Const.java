@@ -21,4 +21,6 @@ public interface Const {
     short CHUNK_NUM = 1024;
     //世界边长 1024*16==16384;
     short MAX_LENGTH = CHUNK_NUM * CHUNK_LENGTH;
+    //站立/移动检测周期
+    long STANDING_CHECK = 1000;
 }

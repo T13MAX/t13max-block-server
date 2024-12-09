@@ -54,3 +54,18 @@ enum EntityEnum{
   PLAYER = 1;
   ZOMBIE = 2;
 }
+
+//移动类型
+enum MotionEnum{
+  NONE = 0;
+  POSITION = 1;
+  CHASE = 2;
+  FLY = 3;
+  FOLLOW = 4;
+  JUMP = 5;
+  DIRECTION = 7;
+  WANDER = 8;
+  SPREAD = 9;
+  EVADE = 10;
+  PATROL = 11;
+}

@@ -1,9 +1,12 @@
 package com.t13max.game.entity;
 
+import com.t13max.game.consts.UnitBits;
 import com.t13max.game.pos.Position;
 import com.t13max.game.world.World;
 import com.t13max.game.world.chunk.Chunk;
 import lombok.Getter;
+
+import java.util.BitSet;
 
 /**
  * 实体 顶级父类
@@ -21,6 +24,9 @@ public abstract class Entity implements IEntity {
 
     //所在位置
     protected Position position;
+
+    //状态
+    protected BitSet bitSet = new BitSet(63);
 
     public Entity() {
     }
@@ -176,4 +182,13 @@ public abstract class Entity implements IEntity {
         //同步消息给相关实体
     }
 
+    @Override
+    public boolean isMovable() {
+        return this.bitSet.get(UnitBits.MOVING);
+    }
+
+    @Override
+    public float getModelRadius() {
+        return 1;
+    }
 }

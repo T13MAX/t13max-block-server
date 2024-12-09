@@ -19,7 +19,6 @@ import java.util.Set;
  * @author: t13max
  * @since: 16:18 2024/7/25
  */
-@Getter
 public class WorldModules {
 
     private final World owner;
@@ -46,7 +45,7 @@ public class WorldModules {
                     continue;
                 }
                 // 创建实例
-                Object inst = clazz.getDeclaredConstructor(World.class).newInstance(this);
+                Object inst = clazz.getDeclaredConstructor(World.class).newInstance(owner);
                 WorldModule module = (WorldModule) inst;
                 moduleMap.put(module.getClass(), module);
             }

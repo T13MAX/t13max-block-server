@@ -22,9 +22,7 @@ import java.util.Set;
 @Getter
 public abstract class EntityModule {
 
-    private final IEntity owner;
-
-    private final Map<Class<? extends EntityModule>, EntityModule> moduleMap = new HashMap<>();
+    protected final IEntity owner;
 
     public EntityModule(IEntity owner) {
         this.owner = owner;
@@ -37,36 +35,23 @@ public abstract class EntityModule {
      * @Author t13max
      * @Date 16:36 2024/7/25
      */
-    private void initModule() {
-        try {
-            Set<Class<?>> classSet = PackageUtil.scanCache("com.t13max.game.entity.module");
-            for (Class<?> clazz : classSet) {
-                // 只需要加载TemplateHelper注解数据
-                if (!EntityModule.class.isAssignableFrom(clazz) || Modifier.isAbstract(clazz.getModifiers())) {
-                    continue;
-                }
-                // 创建实例
-                Object inst = clazz.getDeclaredConstructor(IEntity.class).newInstance(this);
-                EntityModule module = (EntityModule) inst;
-                moduleMap.put(module.getClass(), module);
-            }
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                 InvocationTargetException e) {
-            throw new GameException(e);
-        }
+    protected void initModule() {
+
     }
 
     /**
-     * 根据类型获取模块
-     *
+     * 实体模块tick
      * @Author t13max
-     * @Date 16:36 2024/7/25
+     * @Date 16:16 2024/12/9
      */
-    public <T extends EntityModule> T getEntityModule(Class<T> clazz) {
-        return (T) moduleMap.get(clazz);
+    protected void tick() {
+
     }
 
-    public void tick() {
-        this.moduleMap.values().forEach(EntityModule::tick);
+    public void enterWorld() {
+
+    }
+
+    public void leaveWorld() {
     }
 }

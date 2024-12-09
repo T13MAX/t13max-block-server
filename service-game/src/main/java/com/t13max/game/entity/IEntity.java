@@ -35,4 +35,10 @@ public interface IEntity extends EntityQuery {
     void changePosition(Position newPos);
 
     void onChunkChanged(Chunk leaveChunk, Chunk enterChunk);
+
+    boolean isMovable();
+
+    World getWorld();
+
+    float getModelRadius();
 }
