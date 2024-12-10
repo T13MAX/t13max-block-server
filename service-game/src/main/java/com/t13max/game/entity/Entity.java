@@ -1,9 +1,12 @@
 package com.t13max.game.entity;
 
+import com.google.protobuf.Message;
 import com.t13max.game.consts.UnitBits;
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.game.world.World;
 import com.t13max.game.world.chunk.Chunk;
+import com.t13max.util.TimeUtil;
 import lombok.Getter;
 
 import java.util.BitSet;
@@ -18,12 +21,12 @@ import java.util.BitSet;
 public abstract class Entity implements IEntity {
 
     protected long id;
-
     //所在世界
     protected World world;
-
     //所在位置
-    protected Position position;
+    protected Vector3D position;
+    //朝向
+    protected Vector3D direction;
 
     //状态
     protected BitSet bitSet = new BitSet(63);
@@ -129,6 +132,11 @@ public abstract class Entity implements IEntity {
 
     }
 
+    @Override
+    public Position getDataPos() {
+        return null;
+    }
+
     /**
      * 位置变化
      *
@@ -136,8 +144,8 @@ public abstract class Entity implements IEntity {
      * @Date 16:06 2024/12/6
      */
     @Override
-    public void changePosition(Position newPos) {
-        Position oldPos = this.position;
+    public void changePosition(Vector3D newPos) {
+        Vector3D oldPos = this.position;
         this.position = newPos;
         this.world.onObjectMoved(this, oldPos, newPos);
     }
@@ -157,6 +165,11 @@ public abstract class Entity implements IEntity {
         onChunkLeave(leaveChunk, chunkDir);
         //进入新的视野单元格
         onChunkEnter(enterChunk, chunkDir);
+    }
+
+    @Override
+    public void moveTowards(IEntity other, double distance) {
+
     }
 
     /**
@@ -188,7 +201,54 @@ public abstract class Entity implements IEntity {
     }
 
     @Override
+    public void changeDirection(Vector3D direction) {
+        this.direction = direction;
+    }
+
+    @Override
+    public Vector3D getDirection() {
+        return direction;
+    }
+
+    @Override
+    public boolean getBit(int index) {
+        return this.bitSet.get(index);
+    }
+
+    @Override
+    public void setBit(int index, boolean apply) {
+        this.bitSet.set(index, apply);
+        onBitExChanged(index, apply);
+    }
+
+    protected void onBitExChanged(int bit, boolean apply) {
+
+    }
+
+    @Override
     public float getModelRadius() {
         return 1;
+    }
+
+    @Override
+    public void changeSpeed(float selfSpeed, float targetSpeed) {
+
+    }
+
+    @Override
+    public float getSpeed() {
+        return 1;
+    }
+
+    @Override
+    public long getTime() {
+        if (world == null) {
+            return TimeUtil.nowMills();
+        }
+        return this.world.getTime();
+    }
+
+    public final void sendMsgToView(Message message, long exceptId) {
+
     }
 }

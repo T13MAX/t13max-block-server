@@ -13,4 +13,6 @@ public interface MotionConst {
     int MOTION_IGNORE_FINISHED = 0x0004;
     //移动标记位计算高度
     int MOTION_COMPUTE_HEIGHT = 0x0008;
+
+    float POSITION_DISTANCE_ERROR_RANGE = 0.05f;
 }

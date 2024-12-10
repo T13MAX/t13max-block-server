@@ -1,7 +1,9 @@
 package com.t13max.game.entity;
 
+import com.google.protobuf.Message;
 import com.t13max.game.entity.module.EntityModules;
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.game.world.World;
 import com.t13max.game.world.chunk.Chunk;
 import com.t13max.persist.data.entity.EntityData;
@@ -24,7 +26,9 @@ public interface IEntity extends EntityQuery {
     void tick();
 
     //获取当前实体所在位置
-    Position getPosition();
+    Vector3D getPosition();
+
+    Position getDataPos();
 
     EntityData getEntityData();
 
@@ -32,13 +36,32 @@ public interface IEntity extends EntityQuery {
 
     void leaveWorld(World world);
 
-    void changePosition(Position newPos);
+    void changePosition(Vector3D newPos);
 
     void onChunkChanged(Chunk leaveChunk, Chunk enterChunk);
 
+    void moveTowards(IEntity other, double distance);
+
     boolean isMovable();
+
+    boolean getBit(int index);
+
+    void setBit(int index, boolean apply);
 
     World getWorld();
 
     float getModelRadius();
+
+    void changeSpeed(float selfSpeed, float targetSpeed);
+
+    float getSpeed();
+
+    long getTime();
+
+    void changeDirection(Vector3D direction);
+
+    Vector3D getDirection();
+
+    void sendMsgToView(Message message, long exceptId);
+
 }

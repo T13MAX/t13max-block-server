@@ -52,7 +52,7 @@ public class Chunk {
      */
     public void enterWorld(IEntity entity) {
         this.entityMap.put(entity.getId(), entity);
-        this.chunkData.getEntityDataMap().put(PosUtil.getPos(entity.getPosition()), entity.getEntityData());
+        this.chunkData.getEntityDataMap().put(PosUtil.getPos(entity.getDataPos()), entity.getEntityData());
     }
 
     /**
@@ -64,7 +64,7 @@ public class Chunk {
      */
     public void leaveWorld(IEntity entity) {
         this.entityMap.remove(entity.getId());
-        this.chunkData.getEntityDataMap().remove(PosUtil.getPos(entity.getPosition()));
+        this.chunkData.getEntityDataMap().remove(PosUtil.getPos(entity.getDataPos()));
     }
 
     /**

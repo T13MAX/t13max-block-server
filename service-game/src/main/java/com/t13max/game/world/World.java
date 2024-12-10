@@ -7,6 +7,7 @@ import com.t13max.common.session.ISession;
 import com.t13max.game.consts.Const;
 import com.t13max.game.entity.IEntity;
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.game.util.Log;
 import com.t13max.game.world.module.WorldModules;
 import com.t13max.persist.data.world.WorldData;
@@ -39,6 +40,8 @@ public class World {
     private volatile boolean stop = false;
     //记录上次tick时间
     private long lastTickMills;
+    //当前时间
+    private long curTime;
     //世界持久化数据
     private WorldData worldData;
 
@@ -101,7 +104,7 @@ public class World {
      * @Date 11:30 2024/7/15
      */
     public void tick() {
-
+        this.curTime = TimeUtil.nowMills();
         this.worldModules.tick();
     }
 
@@ -154,7 +157,7 @@ public class World {
                 }
             }
 
-            long endMills = System.currentTimeMillis();
+            long endMills = TimeUtil.nowMills();
 
             this.lastTickMills = endMills;
 
@@ -232,8 +235,8 @@ public class World {
      * @Author t13max
      * @Date 14:10 2024/8/14
      */
-    public void onObjectMoved(IEntity entity, Position oldPos, Position newPos) {
-        worldModules.onEntityMoved(entity,oldPos,newPos);
+    public void onObjectMoved(IEntity entity, Vector3D oldPos, Vector3D newPos) {
+        worldModules.onEntityMoved(entity, oldPos, newPos);
     }
 
     /**
@@ -264,5 +267,9 @@ public class World {
      */
     public <T extends MessageLite> void sendMsg(MessagePack<T> messagePack) {
 
+    }
+
+    public long getTime() {
+        return curTime;
     }
 }

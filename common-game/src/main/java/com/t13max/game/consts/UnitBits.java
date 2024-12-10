@@ -8,4 +8,5 @@ package com.t13max.game.consts;
  */
 public interface UnitBits {
     int MOVING = 0;
+    int JUMP = 1;
 }

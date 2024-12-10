@@ -70,4 +70,5 @@ public class PosUtil {
     public int getChunkId(Position position) {
         return getChunkId(position.getChunkX(), position.getChunkZ());
     }
+
 }

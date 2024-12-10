@@ -1,6 +1,9 @@
 package com.t13max.game.entity.module;
 
 import com.t13max.game.entity.IEntity;
+import com.t13max.game.entity.module.aura.EntityAuraMod;
+import com.t13max.game.entity.module.motion.EntityMotionMod;
+import com.t13max.game.entity.module.station.EntityStationMod;
 import com.t13max.game.exception.GameException;
 import com.t13max.util.PackageUtil;
 import lombok.Getter;
@@ -58,14 +61,26 @@ public class EntityModules {
         return (T) moduleMap.get(clazz);
     }
 
+    public EntityMotionMod getMotionMod() {
+        return this.getEntityModule(EntityMotionMod.class);
+    }
+
+    public EntityStationMod getStationMod() {
+        return this.getEntityModule(EntityStationMod.class);
+    }
+
+    public EntityAuraMod getAuraMod() {
+        return this.getEntityModule(EntityAuraMod.class);
+    }
+
     /**
      * 实体模块tick 被实体tick调用
      *
      * @Author t13max
      * @Date 16:17 2024/12/9
      */
-    public void tick() {
-        this.moduleMap.values().forEach(EntityModule::tick);
+    public void tick(long now) {
+        this.moduleMap.values().forEach(module -> module.tick(now));
     }
 
     /**

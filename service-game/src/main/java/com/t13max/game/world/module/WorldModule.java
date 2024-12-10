@@ -2,6 +2,7 @@ package com.t13max.game.world.module;
 
 import com.t13max.game.entity.IEntity;
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.game.world.World;
 import lombok.Getter;
 
@@ -71,7 +72,7 @@ public abstract class WorldModule {
      * @Author t13max
      * @Date 14:10 2024/8/14
      */
-    public void onEntityMoved(IEntity entity, Position oldPos, Position newPos) {
+    public void onEntityMoved(IEntity entity, Vector3D oldPos, Vector3D newPos) {
 
     }
 

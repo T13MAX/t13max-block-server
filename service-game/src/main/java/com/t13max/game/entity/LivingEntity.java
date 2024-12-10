@@ -2,6 +2,7 @@ package com.t13max.game.entity;
 
 import com.t13max.game.entity.module.EntityModules;
 import com.t13max.game.world.World;
+import com.t13max.util.TimeUtil;
 import lombok.Getter;
 
 /**
@@ -26,7 +27,8 @@ public abstract class LivingEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        this.entityModules.tick();
+        long currentTimeMillis = TimeUtil.nowMills();
+        this.entityModules.tick(currentTimeMillis);
     }
 
     @Override

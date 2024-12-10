@@ -3,6 +3,7 @@ package com.t13max.game.world.module;
 import com.t13max.game.entity.IEntity;
 import com.t13max.game.exception.GameException;
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.game.world.World;
 import com.t13max.util.PackageUtil;
 import lombok.Getter;
@@ -65,6 +66,14 @@ public class WorldModules {
         return (T) moduleMap.get(clazz);
     }
 
+    public WorldEntityMod getEntityMod() {
+        return this.getWorldModule(WorldEntityMod.class);
+    }
+
+    public WorldDetourMod getDetourMod() {
+        return this.getWorldModule(WorldDetourMod.class);
+    }
+
     /**
      * tick
      *
@@ -102,7 +111,7 @@ public class WorldModules {
      * @Author t13max
      * @Date 14:10 2024/8/14
      */
-    public void onEntityMoved(IEntity entity, Position oldPos, Position newPos) {
+    public void onEntityMoved(IEntity entity, Vector3D oldPos, Vector3D newPos) {
         this.moduleMap.values().forEach(module -> module.onEntityMoved(entity, oldPos, newPos));
     }
 }

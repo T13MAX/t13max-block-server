@@ -3,6 +3,7 @@ package com.t13max.game.world.module;
 import com.t13max.game.consts.Const;
 import com.t13max.game.entity.IEntity;
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.game.util.Log;
 import com.t13max.game.util.PosUtil;
 import com.t13max.game.world.World;
@@ -64,27 +65,29 @@ public class WorldChunkMod extends WorldModule {
         return chunkMap.get(chunkId);
     }
 
-    public Chunk getChunk(Position position) {
-        return chunkMap.get(PosUtil.getChunkId(position));
+    public Chunk getChunk(Vector3D position) {
+        //todo 新老坐标不兼容
+        //return chunkMap.get(PosUtil.getChunkId(position));
+        return null;
     }
 
     @Override
     public void enterWorld(IEntity entity) {
 
         //遍历进入
-        List<Chunk> chunkList = get25Chunk(entity.getPosition());
+        List<Chunk> chunkList = get25Chunk(entity.getDataPos());
         chunkList.forEach(chunk -> chunk.enterWorld(entity));
     }
 
     @Override
     public void leaveWorld(IEntity entity) {
         //遍历离开
-        List<Chunk> chunkList = get25Chunk(entity.getPosition());
+        List<Chunk> chunkList = get25Chunk(entity.getDataPos());
         chunkList.forEach(chunk -> chunk.leaveWorld(entity));
     }
 
     @Override
-    public void onEntityMoved(IEntity entity, Position oldPos, Position newPos) {
+    public void onEntityMoved(IEntity entity, Vector3D oldPos, Vector3D newPos) {
 
         if (!checkCross(oldPos, newPos)) {
 
@@ -115,6 +118,12 @@ public class WorldChunkMod extends WorldModule {
      */
     private boolean checkCross(Position oldPos, Position newPos) {
         return oldPos.getChunkX() != newPos.getChunkX() && oldPos.getChunkZ() != newPos.getChunkZ();
+    }
+
+    private boolean checkCross(Vector3D oldPos, Vector3D newPos) {
+        //return oldPos.getChunkX() != newPos.getChunkX() && oldPos.getChunkZ() != newPos.getChunkZ();
+        //todo 新老坐标不兼容
+        return false;
     }
 
     /**

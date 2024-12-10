@@ -1,7 +1,10 @@
 package com.t13max.game.entity.module.motion.attach;
 
 import com.t13max.game.entity.IEntity;
+import com.t13max.game.entity.module.motion.MotionConst;
 import com.t13max.game.entity.module.motion.MotionInfo;
+import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import game.enums.MotionEnum;
 import lombok.Getter;
 
@@ -55,8 +58,9 @@ public abstract class MoveAttachment {
 
     public abstract MotionEnum getMotionEnum();
 
-    public void tick(long now) {
+    public int tick(long now) {
 
+        return 0;
     }
 
     public boolean isIncludeFlags(int flag) {
@@ -73,4 +77,17 @@ public abstract class MoveAttachment {
         this.flags &= ~value;
     }
 
+    /**
+     * 两点距离
+     *
+     * @Author t13max
+     * @Date 14:43 2024/12/10
+     */
+    protected double distance(Vector3D from, Vector3D to) {
+        if (this.isIncludeFlags(MotionConst.MOTION_COMPUTE_HEIGHT)) {
+            return from.distance3D(to);
+        } else {
+            return from.distance(to);
+        }
+    }
 }

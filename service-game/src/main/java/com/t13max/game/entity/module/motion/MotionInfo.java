@@ -2,6 +2,7 @@ package com.t13max.game.entity.module.motion;
 
 
 import com.t13max.game.pos.Position;
+import com.t13max.game.pos.Vector3D;
 import game.enums.MotionEnum;
 
 import java.util.ArrayList;
@@ -16,15 +17,15 @@ import java.util.List;
 public class MotionInfo {
 
     //移动方向
-    public Position direction;
+    public Vector3D direction;
     //移动起点
-    public Position position;
+    public Vector3D position;
     //移动路径
-    public List<Position> paths = new ArrayList<>();
+    public List<Vector3D> paths = new ArrayList<>();
     //当前方向可达的最远点
-    public Position farthestPosition;
+    public Vector3D farthestPosition;
     //当前朝向
-    public Position faceDir;
+    public Vector3D faceDir;
     //移动类型
     public MotionEnum motionEnum;
 }

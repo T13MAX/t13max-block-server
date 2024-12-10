@@ -1,5 +1,6 @@
 package com.t13max.persist.data.entity;
 
+import com.t13max.game.pos.Position;
 import com.t13max.persist.data.IData;
 import game.enums.EntityEnum;
 import lombok.Data;
@@ -16,5 +17,6 @@ public class EntityData implements IData {
     //所属类型
     private EntityEnum entityEnum;
 
-
+    //位置
+    private Position position;
 }

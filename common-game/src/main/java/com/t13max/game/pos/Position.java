@@ -101,4 +101,36 @@ public class Position {
     public int hashCode() {
         return Objects.hash(x, y, z);
     }
+
+    /**
+     * 两点之间的距离，忽视高度
+     *
+     * @Author t13max
+     * @Date 15:28 2024/12/10
+     */
+    public double distance(Position pos) {
+        double t1x = this.x;
+        double t1z = this.z;
+        double t2x = pos.x;
+        double t2z = pos.z;
+
+        return Math.sqrt(Math.pow((t1x - t2x), 2) + Math.pow((t1z - t2z), 2));
+    }
+
+    /**
+     * 两点之间的距离,带高度
+     *
+     * @Author t13max
+     * @Date 15:28 2024/12/10
+     */
+    public double distance3D(Position pos) {
+        double t1x = this.x;
+        double t1y = this.y;
+        double t1z = this.z;
+        double t2x = pos.x;
+        double t2y = pos.y;
+        double t2z = pos.z;
+
+        return Math.sqrt(Math.pow((t1x - t2x), 2) + Math.pow((t1y - t2y), 2) + Math.pow((t1z - t2z), 2));
+    }
 }

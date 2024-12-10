@@ -41,11 +41,13 @@ public abstract class EntityModule {
 
     /**
      * 实体模块tick
+     *
      * @Author t13max
      * @Date 16:16 2024/12/9
      */
-    protected void tick() {
+    protected int tick(long now) {
 
+        return 0;
     }
 
     public void enterWorld() {
