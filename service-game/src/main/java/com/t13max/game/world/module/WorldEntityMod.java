@@ -28,9 +28,14 @@ public class WorldEntityMod extends WorldModule {
      * @Date 17:05 2024/7/25
      */
     @Override
-    public void tick() {
+    public void pulse() {
         //是否应该移到区块tick内?
-        this.entityMap.values().forEach(IEntity::tick);
+        this.entityMap.values().forEach(IEntity::pulse);
+    }
+
+    @Override
+    public void pulsePerSec() {
+        this.entityMap.values().forEach(IEntity::pulsePerSec);
     }
 
     @Override

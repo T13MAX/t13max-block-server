@@ -14,5 +14,29 @@ public class EntityAttrMod extends EntityModule {
     public EntityAttrMod(IEntity owner) {
         super(owner);
     }
+
+    public int getTotalShieldValue() {
+        return 0;
+    }
+
+    public void reduceShieldValue(float damage) {
+
+    }
+
+    public boolean isFullHp() {
+        return false;
+    }
+
+    public float getAttr(int hpRecovery) {
+        return 0;
+    }
+
+    public float modHp(float value) {
+        return 0;
+    }
+
+    public float getHpMax() {
+        return 0;
+    }
 }
 

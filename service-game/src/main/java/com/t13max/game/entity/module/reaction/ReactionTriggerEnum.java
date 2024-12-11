@@ -10,5 +10,17 @@ public enum ReactionTriggerEnum {
 
     STANDING_ONE_PERIOD,
 
+    REACTION_ENTER_COMBAT,
+
+    REACTION_LEAVE_COMBAT,
+
+    REACTION_BE_CURED,
+
+    REACTION_CURE_OBJ,
+
+
+
+
+
     ;
 }

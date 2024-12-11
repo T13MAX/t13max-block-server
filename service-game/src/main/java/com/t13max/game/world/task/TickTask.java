@@ -18,6 +18,6 @@ public class TickTask implements Runnable {
 
     @Override
     public void run() {
-        world.tick();
+        world.pulse();
     }
 }

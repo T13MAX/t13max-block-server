@@ -34,5 +34,10 @@
             <artifactId>common-data</artifactId>
             <version>${common-data.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.t13max.block</groupId>
+            <artifactId>common-template</artifactId>
+            <version>${common-data.version}</version>
+        </dependency>
     </dependencies>
 </project>

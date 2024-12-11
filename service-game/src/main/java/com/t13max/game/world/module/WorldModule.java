@@ -1,7 +1,6 @@
 package com.t13max.game.world.module;
 
 import com.t13max.game.entity.IEntity;
-import com.t13max.game.pos.Position;
 import com.t13max.game.pos.Vector3D;
 import com.t13max.game.world.World;
 import lombok.Getter;
@@ -29,7 +28,11 @@ public abstract class WorldModule {
      * @Author t13max
      * @Date 14:03 2024/8/14
      */
-    public void tick() {
+    public void pulse() {
+
+    }
+
+    public void pulsePerSec() {
 
     }
 

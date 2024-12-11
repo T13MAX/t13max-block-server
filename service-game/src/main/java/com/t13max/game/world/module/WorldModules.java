@@ -2,11 +2,9 @@ package com.t13max.game.world.module;
 
 import com.t13max.game.entity.IEntity;
 import com.t13max.game.exception.GameException;
-import com.t13max.game.pos.Position;
 import com.t13max.game.pos.Vector3D;
 import com.t13max.game.world.World;
 import com.t13max.util.PackageUtil;
-import lombok.Getter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -80,9 +78,14 @@ public class WorldModules {
      * @Author t13max
      * @Date 15:48 2024/12/6
      */
-    public void tick() {
+    public void pulse() {
         //是不是应该控制一下顺序?
-        this.moduleMap.values().forEach(WorldModule::tick);
+        this.moduleMap.values().forEach(WorldModule::pulse);
+    }
+
+    public void pulsePerSec() {
+        //是不是应该控制一下顺序?
+        this.moduleMap.values().forEach(WorldModule::pulsePerSec);
     }
 
     /**

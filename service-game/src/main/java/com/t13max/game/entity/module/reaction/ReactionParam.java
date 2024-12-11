@@ -1,5 +1,8 @@
 package com.t13max.game.entity.module.reaction;
 
+import com.t13max.game.entity.IEntity;
+import com.t13max.util.TimeUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,5 +20,8 @@ public class ReactionParam {
         this.triggerMills = triggerMills;
     }
 
-
+    public ReactionParam(float value, float diff, IEntity target, int magicSn) {
+        this.triggerMills = TimeUtil.nowMills();
+        //后续 优化
+    }
 }

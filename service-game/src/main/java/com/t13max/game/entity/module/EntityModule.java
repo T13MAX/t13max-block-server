@@ -1,17 +1,7 @@
 package com.t13max.game.entity.module;
 
 import com.t13max.game.entity.IEntity;
-import com.t13max.game.exception.GameException;
-import com.t13max.game.world.World;
-import com.t13max.game.world.module.WorldModule;
-import com.t13max.util.PackageUtil;
 import lombok.Getter;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * 实体模块基类
@@ -45,7 +35,12 @@ public abstract class EntityModule {
      * @Author t13max
      * @Date 16:16 2024/12/9
      */
-    protected int tick(long now) {
+    protected int pulse(long now) {
+
+        return 0;
+    }
+
+    protected int pulsePerSec(long now) {
 
         return 0;
     }

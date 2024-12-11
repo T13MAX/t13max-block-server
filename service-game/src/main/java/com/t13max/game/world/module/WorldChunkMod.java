@@ -193,7 +193,7 @@ public class WorldChunkMod extends WorldModule {
     }
 
     @Override
-    public void tick() {
+    public void pulse() {
         int nowSeconds = TimeUtil.nowSeconds();
 
         //根据seconds 加载等级 去 tick

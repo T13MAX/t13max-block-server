@@ -23,7 +23,7 @@ public interface IEntity extends EntityQuery {
     EntityModules getEntityModules();
 
     //实体tick
-    void tick();
+    void pulse();
 
     //获取当前实体所在位置
     Vector3D getPosition();
@@ -31,6 +31,8 @@ public interface IEntity extends EntityQuery {
     Position getDataPos();
 
     EntityData getEntityData();
+
+    void pulsePerSec();
 
     void enterWorld(World world);
 
@@ -64,4 +66,9 @@ public interface IEntity extends EntityQuery {
 
     void sendMsgToView(Message message, long exceptId);
 
+    void onDeath(IEntity caster);
+
+    void onRevive();
+
+    boolean isDead();
 }

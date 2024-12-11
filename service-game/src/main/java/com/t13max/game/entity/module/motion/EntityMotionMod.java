@@ -22,7 +22,6 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * 实体移动模块
@@ -50,8 +49,8 @@ public class EntityMotionMod extends EntityModule {
     }
 
     @Override
-    protected int tick(long now) {
-        super.tick(now);
+    protected int pulse(long now) {
+        super.pulse(now);
 
         if (moveAttachment != null && moveAttachment.isStarted()) {
             int result = moveAttachment.tick(now);

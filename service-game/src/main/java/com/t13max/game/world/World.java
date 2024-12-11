@@ -1,18 +1,16 @@
 package com.t13max.game.world;
 
 import com.google.protobuf.MessageLite;
-import com.t13max.common.msg.MessageManager;
 import com.t13max.common.msg.MessagePack;
-import com.t13max.common.session.ISession;
 import com.t13max.game.consts.Const;
 import com.t13max.game.entity.IEntity;
-import com.t13max.game.pos.Position;
 import com.t13max.game.pos.Vector3D;
 import com.t13max.game.util.Log;
+import com.t13max.game.util.TickTimer;
 import com.t13max.game.world.module.WorldModules;
 import com.t13max.persist.data.world.WorldData;
+import com.t13max.template.temp.TemplateWorld;
 import com.t13max.util.TimeUtil;
-import game.enums.WorldEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,7 +42,8 @@ public class World {
     private long curTime;
     //世界持久化数据
     private WorldData worldData;
-
+    //每秒计时器
+    private TickTimer tickTimer = new TickTimer(TimeUnit.SECONDS.toMillis(1));
 
     public World() {
         worldModules = new WorldModules(this);
@@ -103,9 +102,16 @@ public class World {
      * @Author t13max
      * @Date 11:30 2024/7/15
      */
-    public void tick() {
+    public void pulse() {
         this.curTime = TimeUtil.nowMills();
-        this.worldModules.tick();
+        this.worldModules.pulse();
+        if (tickTimer.isPeriod(curTime)) {
+            pulsePerSec();
+        }
+    }
+
+    public void pulsePerSec() {
+        this.worldModules.pulsePerSec();
     }
 
     /**
@@ -271,5 +277,9 @@ public class World {
 
     public long getTime() {
         return curTime;
+    }
+
+    public TemplateWorld getTemplateWorld() {
+        return null;
     }
 }

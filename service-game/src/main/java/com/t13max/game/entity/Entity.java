@@ -28,9 +28,6 @@ public abstract class Entity implements IEntity {
     //朝向
     protected Vector3D direction;
 
-    //状态
-    protected BitSet bitSet = new BitSet(63);
-
     public Entity() {
     }
 
@@ -45,7 +42,12 @@ public abstract class Entity implements IEntity {
      * @Date 16:08 2024/7/25
      */
     @Override
-    public void tick() {
+    public void pulse() {
+
+    }
+
+    @Override
+    public void pulsePerSec() {
 
     }
 
@@ -196,11 +198,6 @@ public abstract class Entity implements IEntity {
     }
 
     @Override
-    public boolean isMovable() {
-        return this.bitSet.get(UnitBits.MOVING);
-    }
-
-    @Override
     public void changeDirection(Vector3D direction) {
         this.direction = direction;
     }
@@ -208,21 +205,6 @@ public abstract class Entity implements IEntity {
     @Override
     public Vector3D getDirection() {
         return direction;
-    }
-
-    @Override
-    public boolean getBit(int index) {
-        return this.bitSet.get(index);
-    }
-
-    @Override
-    public void setBit(int index, boolean apply) {
-        this.bitSet.set(index, apply);
-        onBitExChanged(index, apply);
-    }
-
-    protected void onBitExChanged(int bit, boolean apply) {
-
     }
 
     @Override
@@ -249,6 +231,17 @@ public abstract class Entity implements IEntity {
     }
 
     public final void sendMsgToView(Message message, long exceptId) {
+
+    }
+
+
+    @Override
+    public void onDeath(IEntity caster) {
+
+    }
+
+    @Override
+    public void onRevive() {
 
     }
 }

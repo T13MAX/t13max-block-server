@@ -1,8 +1,11 @@
 package com.t13max.game.entity.module;
 
 import com.t13max.game.entity.IEntity;
+import com.t13max.game.entity.module.attr.EntityAttrMod;
 import com.t13max.game.entity.module.aura.EntityAuraMod;
+import com.t13max.game.entity.module.combat.EntityCombatMod;
 import com.t13max.game.entity.module.motion.EntityMotionMod;
+import com.t13max.game.entity.module.reaction.EntityReactionMod;
 import com.t13max.game.entity.module.station.EntityStationMod;
 import com.t13max.game.exception.GameException;
 import com.t13max.util.PackageUtil;
@@ -73,14 +76,30 @@ public class EntityModules {
         return this.getEntityModule(EntityAuraMod.class);
     }
 
+    public EntityAttrMod getAttrMod() {
+        return this.getEntityModule(EntityAttrMod.class);
+    }
+
+    public EntityReactionMod getReactionMod() {
+        return this.getEntityModule(EntityReactionMod.class);
+    }
+
+    public EntityCombatMod getCombatMod() {
+        return this.getEntityModule(EntityCombatMod.class);
+    }
+
     /**
      * 实体模块tick 被实体tick调用
      *
      * @Author t13max
      * @Date 16:17 2024/12/9
      */
-    public void tick(long now) {
-        this.moduleMap.values().forEach(module -> module.tick(now));
+    public void pulse(long now) {
+        this.moduleMap.values().forEach(module -> module.pulse(now));
+    }
+
+    public void pulsePerSec(long now) {
+        this.moduleMap.values().forEach(module -> module.pulsePerSec(now));
     }
 
     /**
