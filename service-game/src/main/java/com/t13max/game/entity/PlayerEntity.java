@@ -1,5 +1,7 @@
 package com.t13max.game.entity;
 
+import com.google.protobuf.Message;
+import com.t13max.game.pos.Vector3D;
 import com.t13max.persist.data.entity.EntityData;
 import com.t13max.persist.data.entity.PlayerData;
 
@@ -22,4 +24,5 @@ public class PlayerEntity extends LivingEntity {
     public EntityData getEntityData() {
         return playerData;
     }
+
 }

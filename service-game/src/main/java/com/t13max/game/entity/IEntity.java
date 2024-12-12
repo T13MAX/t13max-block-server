@@ -66,9 +66,27 @@ public interface IEntity extends EntityQuery {
 
     void sendMsgToView(Message message, long exceptId);
 
+    void sendMsg(Message message);
+
     void onDeath(IEntity caster);
 
     void onRevive();
 
     boolean isDead();
+
+    boolean isInWorld();
+
+    void setHp(float curr);
+
+    void serializeRoleInfo();
+
+    IndirectObject<IEntity> getIndirectObject();
+
+    int distance(Vector3D position);
+
+    boolean isVisibleToOthers(IEntity other);
+
+    Vector3D getNormalizeDir();
+
+    void killMySelf();
 }

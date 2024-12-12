@@ -6,8 +6,7 @@ import com.t13max.game.entity.IEntity;
 import com.t13max.game.entity.PlayerEntity;
 import com.t13max.game.entity.module.EntityModule;
 import com.t13max.game.entity.module.combat.attachment.CombatAttachment;
-import com.t13max.game.entity.module.reaction.ReactionTriggerEnum;
-import com.t13max.game.entity.module.skill.DamageConst;
+import com.t13max.game.entity.module.reaction.ReactionEnum;
 import com.t13max.game.event.OnEntityBeHit;
 import com.t13max.game.event.OnEntityCombatStatusChange;
 import com.t13max.game.event.OnPlayerHit;
@@ -169,21 +168,6 @@ public class EntityCombatMod extends EntityModule {
     }
 
     /**
-     * 护盾消耗
-     *
-     * @Author t13max
-     * @Date 15:47 2024/12/11
-     */
-    public void costShield(float damage) {
-        if (damage < DamageConst.NIL) {
-            return;
-        }
-        if (owner.getEntityModules().getAttrMod().getTotalShieldValue() > 0) {
-            owner.getEntityModules().getAttrMod().reduceShieldValue(damage);
-        }
-    }
-
-    /**
      * 进入战斗
      *
      * @Author t13max
@@ -202,7 +186,7 @@ public class EntityCombatMod extends EntityModule {
             attachments.forEach((key, value) -> value.onEnterCombat());
         }
 
-        owner.getEntityModules().getReactionMod().trigger(ReactionTriggerEnum.REACTION_ENTER_COMBAT, null);
+        owner.getEntityModules().getReactionMod().trigger(ReactionEnum.REACTION_ENTER_COMBAT, null);
 
         GameEventBus.inst().postEvent(new OnEntityCombatStatusChange(owner, inCombat));
     }
@@ -227,7 +211,7 @@ public class EntityCombatMod extends EntityModule {
             attachments.forEach((key, value) -> value.onLeaveCombat());
         }
 
-        owner.getEntityModules().getReactionMod().trigger(ReactionTriggerEnum.REACTION_LEAVE_COMBAT, null);
+        owner.getEntityModules().getReactionMod().trigger(ReactionEnum.REACTION_LEAVE_COMBAT, null);
 
         owner.getEntityModules().getStationMod().leaveAround();
 

@@ -10,3 +10,9 @@ message PBVector3D{
   float y = 2;
   float z = 3;
 }
+
+message PBAura{
+
+  uint64 id = 1;
+  uint32 templateId = 2;
+}

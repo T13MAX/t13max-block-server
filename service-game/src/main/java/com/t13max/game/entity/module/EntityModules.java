@@ -6,7 +6,9 @@ import com.t13max.game.entity.module.aura.EntityAuraMod;
 import com.t13max.game.entity.module.combat.EntityCombatMod;
 import com.t13max.game.entity.module.motion.EntityMotionMod;
 import com.t13max.game.entity.module.reaction.EntityReactionMod;
+import com.t13max.game.entity.module.skill.EntitySkillMod;
 import com.t13max.game.entity.module.station.EntityStationMod;
+import com.t13max.game.entity.module.summon.EntitySummonMod;
 import com.t13max.game.exception.GameException;
 import com.t13max.util.PackageUtil;
 import lombok.Getter;
@@ -86,6 +88,14 @@ public class EntityModules {
 
     public EntityCombatMod getCombatMod() {
         return this.getEntityModule(EntityCombatMod.class);
+    }
+
+    public EntitySummonMod getSummonMod() {
+        return this.getEntityModule(EntitySummonMod.class);
+    }
+
+    public EntitySkillMod getSkillMod() {
+        return this.getEntityModule(EntitySkillMod.class);
     }
 
     /**

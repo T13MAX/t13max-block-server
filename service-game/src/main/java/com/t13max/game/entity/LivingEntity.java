@@ -20,9 +20,6 @@ public abstract class LivingEntity extends Entity {
     //模块合集
     protected final EntityModules entityModules;
 
-    //状态
-    protected BitSet bitSet = new BitSet(63);
-
     protected LivingEntity() {
         //提前暴露当前对象 但是只赋值 问题不大
         this.entityModules = new EntityModules(this);
@@ -53,26 +50,6 @@ public abstract class LivingEntity extends Entity {
     protected void leaveWorldAfter() {
         super.leaveWorldAfter();
         this.entityModules.leaveWorld();
-    }
-
-    @Override
-    public boolean isMovable() {
-        return this.bitSet.get(UnitBits.MOVING);
-    }
-
-    @Override
-    public boolean getBit(int index) {
-        return this.bitSet.get(index);
-    }
-
-    @Override
-    public void setBit(int index, boolean apply) {
-        this.bitSet.set(index, apply);
-        onBitExChanged(index, apply);
-    }
-
-    protected void onBitExChanged(int bit, boolean apply) {
-
     }
 
     @Override

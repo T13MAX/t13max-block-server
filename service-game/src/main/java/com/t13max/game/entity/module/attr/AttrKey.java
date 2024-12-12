@@ -1,10 +1,17 @@
 package com.t13max.game.entity.module.attr;
 
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 /**
  * @author t13max
  * @since 16:05 2024/12/11
  */
 public interface AttrKey {
+
+    //主属性
+    Set<Integer> MAIN_ATTRS = new LinkedHashSet<>(Arrays.asList(10, 20));
 
     //生命值
     int hpLimit = 10;
@@ -65,4 +72,24 @@ public interface AttrKey {
     int dodge = 120;
     int dodge_v = 121;
     int dodge_p = 122;
+
+    //攻击速度
+    int attackSpeed = 250;
+    int attackSpeed_v = 251;
+    int attackSpeed_p = 252;
+
+    //技能冷却
+    int skillSpeed = 260;
+    int skillSpeed_v = 261;
+    int skillSpeed_p = 262;
+
+    //移动速度
+    int moveSpeed = 270;
+    int moveSpeed_v = 271;
+    int moveSpeed_p = 272;
+
+    //坐骑速度
+    int rideSpeed = 280;
+    int rideSpeed_v = 281;
+    int rideSpeed_p = 282;
 }

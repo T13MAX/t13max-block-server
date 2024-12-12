@@ -13,8 +13,23 @@ import lombok.Data;
 public class TemplateAura implements ITemplate {
 
 
-    private int id;
+    public int id;
 
+    public int friendlyLevel;
+    public int signGroup;
+    public int conflictGroup;
+    public int groupPriority;
+    public int refreshTime;
+    public int duration;
+    public int targetNumber;
+    public int auraTarget;
+    public int singleBuff;
+    public int flags;
+    public int overlapMax;
+    public boolean reduceOverlap;
+    public boolean manageByMagic;
+    public boolean finishWhenOffline;
+    public int[] effect;
 
 
 }

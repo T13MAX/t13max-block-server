@@ -8,7 +8,7 @@ import com.t13max.game.entity.module.EntityModule;
 import com.t13max.game.entity.module.motion.attach.*;
 import com.t13max.game.entity.module.reaction.EntityReactionMod;
 import com.t13max.game.entity.module.reaction.ReactionParam;
-import com.t13max.game.entity.module.reaction.ReactionTriggerEnum;
+import com.t13max.game.entity.module.reaction.ReactionEnum;
 import com.t13max.game.pos.Position;
 import com.t13max.game.pos.Vector3D;
 import com.t13max.game.util.Log;
@@ -66,13 +66,13 @@ public class EntityMotionMod extends EntityModule {
                 // 移动触发器
                 if (stateTimer.isPeriod(now)) {
                     this.owner.getEntityModules().getEntityModule(EntityReactionMod.class)
-                            .trigger(ReactionTriggerEnum.MOVING_ONE_PERIOD, new ReactionParam(now));
+                            .trigger(ReactionEnum.MOVING_ONE_PERIOD, new ReactionParam(now));
                 }
             } else {
                 // 保持站立触发器
                 if (stateTimer.isPeriod(now)) {
                     this.owner.getEntityModules().getEntityModule(EntityReactionMod.class)
-                            .trigger(ReactionTriggerEnum.STANDING_ONE_PERIOD, new ReactionParam(now));
+                            .trigger(ReactionEnum.STANDING_ONE_PERIOD, new ReactionParam(now));
                 }
             }
         }

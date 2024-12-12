@@ -1,10 +1,12 @@
 package com.t13max.game.entity.module.reaction;
 
 /**
+ * 反应枚举
+ *
  * @author t13max
  * @since 14:06 2024/12/10
  */
-public enum ReactionTriggerEnum {
+public enum ReactionEnum {
 
     MOVING_ONE_PERIOD,
 
@@ -18,8 +20,9 @@ public enum ReactionTriggerEnum {
 
     REACTION_CURE_OBJ,
 
+    REACTION_AURA_CREATING,
 
-
+    REACTION_PER_SECOND,
 
 
     ;

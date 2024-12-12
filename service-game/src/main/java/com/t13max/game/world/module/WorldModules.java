@@ -72,6 +72,10 @@ public class WorldModules {
         return this.getWorldModule(WorldDetourMod.class);
     }
 
+    public WorldUuidMod getUuidMod() {
+        return this.getWorldModule(WorldUuidMod.class);
+    }
+
     /**
      * tick
      *

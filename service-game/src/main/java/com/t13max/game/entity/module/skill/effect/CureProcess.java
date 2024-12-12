@@ -4,7 +4,7 @@ package com.t13max.game.entity.module.skill.effect;
 import com.t13max.game.consts.UnitBits;
 import com.t13max.game.entity.IEntity;
 import com.t13max.game.entity.module.reaction.ReactionParam;
-import com.t13max.game.entity.module.reaction.ReactionTriggerEnum;
+import com.t13max.game.entity.module.reaction.ReactionEnum;
 import com.t13max.game.entity.module.skill.DamageConst;
 
 /**
@@ -37,9 +37,9 @@ public class CureProcess {
 
         float diff = target.getEntityModules().getAttrMod().modHp(value);
         ReactionParam param = new ReactionParam(value, diff, target, magicSn);
-        target.getEntityModules().getReactionMod().trigger(ReactionTriggerEnum.REACTION_BE_CURED, param);
+        target.getEntityModules().getReactionMod().trigger(ReactionEnum.REACTION_BE_CURED, param);
         if (caster != null) {
-            caster.getEntityModules().getReactionMod().trigger(ReactionTriggerEnum.REACTION_CURE_OBJ, param);
+            caster.getEntityModules().getReactionMod().trigger(ReactionEnum.REACTION_CURE_OBJ, param);
         }
 
         if (diff < DamageConst.EPSILON) {

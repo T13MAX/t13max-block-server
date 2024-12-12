@@ -282,4 +282,8 @@ public class World {
     public TemplateWorld getTemplateWorld() {
         return null;
     }
+
+    public boolean canRevive() {
+        return false;
+    }
 }

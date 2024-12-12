@@ -15,5 +15,6 @@ public enum WorldEventEnum implements IEventEnum {
     OnEntityBeHit,
     OnPlayerKill,
     OnEntityCombatStatusChange,
+    OnPlayerEntityRelive,
     ;
 }

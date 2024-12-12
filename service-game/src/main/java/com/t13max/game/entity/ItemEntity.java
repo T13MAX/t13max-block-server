@@ -25,16 +25,6 @@ public class ItemEntity extends Entity{
     }
 
     @Override
-    public boolean getBit(int index) {
-        return false;
-    }
-
-    @Override
-    public void setBit(int index, boolean apply) {
-
-    }
-
-    @Override
     public boolean isDead() {
         return false;
     }

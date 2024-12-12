@@ -27,6 +27,8 @@ public abstract class Entity implements IEntity {
     protected Vector3D position;
     //朝向
     protected Vector3D direction;
+    //状态
+    protected BitSet bitSet = new BitSet(63);
 
     public Entity() {
     }
@@ -131,6 +133,26 @@ public abstract class Entity implements IEntity {
      * @Date 16:00 2024/12/6
      */
     protected void leaveWorldAfter() {
+
+    }
+
+    @Override
+    public boolean isMovable() {
+        return this.bitSet.get(UnitBits.MOVING);
+    }
+
+    @Override
+    public boolean getBit(int index) {
+        return this.bitSet.get(index);
+    }
+
+    @Override
+    public void setBit(int index, boolean apply) {
+        this.bitSet.set(index, apply);
+        onBitExChanged(index, apply);
+    }
+
+    protected void onBitExChanged(int bit, boolean apply) {
 
     }
 
@@ -244,4 +266,50 @@ public abstract class Entity implements IEntity {
     public void onRevive() {
 
     }
+
+    @Override
+    public void sendMsg(Message message) {
+
+    }
+
+    @Override
+    public boolean isInWorld() {
+        return false;
+    }
+
+    @Override
+    public void setHp(float curr) {
+
+    }
+
+    @Override
+    public void serializeRoleInfo() {
+
+    }
+
+    @Override
+    public IndirectObject<IEntity> getIndirectObject() {
+        return null;
+    }
+
+    @Override
+    public int distance(Vector3D position) {
+        return 0;
+    }
+
+    @Override
+    public boolean isVisibleToOthers(IEntity other) {
+        return false;
+    }
+
+    @Override
+    public Vector3D getNormalizeDir() {
+        return null;
+    }
+
+    @Override
+    public void killMySelf() {
+
+    }
+
 }

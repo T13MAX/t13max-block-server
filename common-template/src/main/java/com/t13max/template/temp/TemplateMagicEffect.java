@@ -13,7 +13,9 @@ import lombok.Data;
 public class TemplateMagicEffect implements ITemplate {
 
 
-    private int id;
+    public int id;
+    public int type;
+    public int upgrade;
 
 
 

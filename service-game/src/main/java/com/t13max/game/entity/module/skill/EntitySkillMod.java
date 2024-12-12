@@ -14,4 +14,8 @@ public class EntitySkillMod extends EntityModule {
     public EntitySkillMod(IEntity owner) {
         super(owner);
     }
+
+    public void interruptMagic(int interruptMove) {
+
+    }
 }

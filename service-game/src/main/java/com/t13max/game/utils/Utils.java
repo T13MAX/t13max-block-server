@@ -10,6 +10,7 @@ import lombok.experimental.UtilityClass;
 public class Utils {
 
     public static double EPSILON = 1.0e-6;
+    public static float FLOAT_ZERO = 0f;
 
     public static boolean isFloatEqual(float f1, float f2) {
         return Math.abs(f1 - f2) < 0.000001f;
