@@ -169,7 +169,8 @@ public class EntityShiftMod extends EntityModule {
     /**
      * 是否挑点中
      *
-     * @return 是否挑点中
+     * @Author t13max
+     * @Date 13:49 2024/12/12
      */
     public boolean isJumping() {
 

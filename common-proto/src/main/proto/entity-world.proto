@@ -16,3 +16,7 @@ message PBAura{
   uint64 id = 1;
   uint32 templateId = 2;
 }
+
+message PBMagicCooldown{
+
+}

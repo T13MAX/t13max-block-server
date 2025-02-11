@@ -13,8 +13,11 @@ import lombok.Data;
 public class TemplateMagic implements ITemplate {
 
 
-    private int id;
+    public int id;
 
+    public int cdTime;
 
-
+    public int slotCd;
+    public int overlay  ;
+    public long overlayRecovery;
 }
